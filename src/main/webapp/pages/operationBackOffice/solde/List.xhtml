@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br><br></br><br></br>
+        <h:form id="CmpteListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Soldes">
+
+                    <p:dataTable id="datalist" value="#{compteBean.comptes}" var="item" resizableColumns="true" 
+                                 selectionMode="single" selection="#{compteBean.compte}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun compte"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="IDClient"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                       
+                        <p:column sortBy="#{item.sigle}" filterBy="#{item.sigle}">
+                            <f:facet name="header">
+                                <h:outputText value="Sigle"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sigle}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.adresse1}" filterBy="#{item.adresse1}">
+                            <f:facet name="header">
+                                <h:outputText value="Adresse 1"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.adresse2}" filterBy="#{item.adresse2}">
+                            <f:facet name="header">
+                                <h:outputText value="Adresse 2"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse2}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.ville}" filterBy="#{item.ville}">
+                            <f:facet name="header">
+                                <h:outputText value="Ville"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ville}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.pays}" filterBy="#{item.pays}">
+                            <f:facet name="header">
+                                <h:outputText value="Pays"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pays}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.telephone1}" filterBy="#{item.telephone1}">
+                            <f:facet name="header">
+                                <h:outputText value="telephone N°1"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephone1}"/>
+                        </p:column>
+                         <p:column sortBy="#{item.telephone2}" filterBy="#{item.telephone2}">
+                            <f:facet name="header">
+                                <h:outputText value="telephone N°2"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephone2}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.modeExpiration}" filterBy="#{item.modeExpiration}">
+                            <f:facet name="header">
+                                <h:outputText value="Mode Expiration"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modeExpiration}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.classeCompte}" filterBy="#{item.classeCompte}">
+                            <f:facet name="header">
+                                <h:outputText value="Classe Compte"/>
+                            </f:facet>
+                            <h:outputText value="#{item.classeCompte}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.dateCreation}" filterBy="#{item.dateCreation}">
+                            <f:facet name="header">
+                                <h:outputText value="Date Creation"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateCreation}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.solde}" filterBy="#{item.solde}">
+                            <f:facet name="header">
+                                <h:outputText value="Solde"/>
+                            </f:facet>
+                            <h:outputText value="#{item.solde}"/>
+                        </p:column>
+                         <p:column sortBy="#{item.idPersonnePhysique.nom }" filterBy="#{item.idPersonnePhysique.nom}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Client Physique"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonnePhysique.nom } #{item.idPersonnePhysique.prenom1}"/>
+                        </p:column>
+                         <p:column sortBy="#{item.idPersonnePhysique.nom }" filterBy="#{item.idPersonnePhysique.nom}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Client Morale"/>
+                            </f:facet>
+                             <h:outputText value="#{item.idPersonneMoral.nomEntreprise } #{item.idPersonneMoral.numEnregistrement}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{compteBean.delete}" update=":growl,datalist"/></ol>   
+                   <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":CmpteViewForm" oncomplete="CmpteViewDialog.show()"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="View.xhtml"/>
+    </ui:define>
+</ui:composition>

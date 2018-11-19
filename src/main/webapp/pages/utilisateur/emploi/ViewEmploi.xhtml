@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <h:outputText value="Client >> Emploi" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <p:dialog id="EmploiViewDlg" widgetVar="EmploiViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil">
+
+            <h:form id="EmploiViewForm">
+
+                <h:panelGroup id="display">
+
+                    <p:panelGrid columns="2" rendered="#{emploiBean.emploi != null}">
+
+                        <h:outputText value="Profession"/>
+                        <h:outputText value="#{emploiBean.emploi.profession}" title="#{emploiBean.emploi.profession}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Entreprise"/>
+                        <h:outputText value="#{emploiBean.emploi.nomEntreprise}" title="#{emploiBean.emploi.nomEntreprise}"  style="width: 275px;"/>
+
+                        <h:outputText value="Désignation"/>
+                        <h:outputText value="#{emploiBean.emploi.designation}" title="#{emploiBean.emploi.designation}"  style="width: 275px;"/>
+
+                        <h:outputText value="Type Emploi"/>
+                        <h:outputText value="#{emploiBean.emploi.typeEmploi}" title="#{emploiBean.emploi.typeEmploi}"  style="width: 275px;"/>
+
+                        <h:outputText value="Numero Du Permis De Travail"/>
+                        <h:outputText value="#{emploiBean.emploi.numPermiTravail}" title="#{emploiBean.emploi.numPermiTravail}"  style="width: 275px;"/>
+
+                        <h:outputText value="Frais Loyer"/>
+                        <h:outputText value="#{emploiBean.emploi.fraisLoyer}" title="#{emploiBean.emploi.fraisLoyer}"  style="width: 275px;"/>
+
+                        <h:outputText value="Travail Depuis"/>
+                        <h:outputText value="#{emploiBean.emploi.travailDepuis}" title="#{emploiBean.emploi.travailDepuis}"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                     <p:commandButton icon="ui-icon-close" value="Fermer" oncomplete="EmploiViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

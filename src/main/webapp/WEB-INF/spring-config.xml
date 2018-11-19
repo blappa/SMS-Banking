@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd" 
+       xmlns:context="http://www.springframework.org/schema/context" >
+    
+    <!-- couches applicatives -->
+    <bean id="IAdresse" class="lappa.smsbanking.IDao.Impl.IAdresseImpl"/>
+    <bean id="IEmploi" class="lappa.smsbanking.IDao.Impl.IEmploiImpl"/>
+    <bean id="IOffreSpeciale" class="lappa.smsbanking.IDao.Impl.IOffreSpecialeImpl"/>
+    <bean id="IOperation" class="lappa.smsbanking.IDao.Impl.IOperationImpl"/>
+    <bean id="IPersonne" class="lappa.smsbanking.IDao.Impl.IPersonneImpl"/>
+    <bean id="ICompte" class="lappa.smsbanking.IDao.Impl.ICompteImpl"/>
+    <bean id="ISms" class="lappa.smsbanking.IDao.Impl.ISmsImpl"/>
+    <bean id="IPersonneMoral" class="lappa.smsbanking.IDao.Impl.IPersonneMoraleImpl"/>
+    <bean id="IPersonnePhysique" class="lappa.smsbanking.IDao.Impl.IPersonnePhysImpl"/>
+    <bean id="IAgence" class="lappa.smsbanking.IDao.Impl.IAgenceImpl"/>
+    <bean id="IChequier" class="lappa.smsbanking.IDao.Impl.IChequierImpl"/>
+    <bean id="ISmsCompte" class="lappa.smsbanking.IDao.Impl.ISmsCompteImpl"/>
+    <bean id="IVirement" class="lappa.smsbanking.IDao.Impl.IVirementImpl"/>
+    <bean id="IAutorisation" class="lappa.smsbanking.IDao.Impl.IAutorisationDaoImpl"/>
+    <bean id="loginDao" class="lappa.smsbanking.IDao.Impl.IAutorisationDaoImpl"/>
+    <bean id="ISupport" class="lappa.smsbanking.IDao.Impl.ISupportImpl"/>
+    <bean id="ICompteParent" class="lappa.smsbanking.IDao.Impl.ICompteParentImpl"/>
+    
+    <!-- couche metier -->
+    <bean id="servicePersonne" class="lappa.smsbanking.IService.Impl.IServicePersonneImpl" >
+        <property name="iPersonne" ref="IPersonne" />
+    </bean>
+    <bean id="serviceCompteParent" class="lappa.smsbanking.IService.Impl.IServiceCompteParentImpl" >
+        <property name="iSmsCompte" ref="ISmsCompte" />
+        <property name="iCompteParent" ref="ICompteParent" />
+    </bean>
+    <bean id="serviceAdmin" class="lappa.smsbanking.IService.Impl.IServiceAutorisationImpl" >
+        <property name="personneDao" ref="IPersonne" />
+        <property name="autorisationDao" ref="IAutorisation" />
+        <property name="loginDao" ref="IAutorisation" />
+    </bean>
+    <bean id="serviceCompte" class="lappa.smsbanking.IService.Impl.IServiceCompteImpl" >
+        <property name="iCompte" ref="ICompte" />
+        <property name="iPersonne" ref="IPersonne" />
+        <property name="iPersonneMorale" ref="IPersonneMoral" />
+        <property name="iPersonnePhys" ref="IPersonnePhysique" />
+    </bean>
+     <bean id="serviceVirement" class="lappa.smsbanking.IService.Impl.IServiceVirementImpl" >
+        <property name="iVirement" ref="IVirement" />
+        <property name="iCompte" ref="ICompte" />
+    </bean>
+    <bean id="serviceAgence" class="lappa.smsbanking.IService.Impl.IServiceAgenceImpl" >
+        <property name="iAgence" ref="IAgence" />
+    </bean>
+    <bean id="serviceOperation" class="lappa.smsbanking.IService.Impl.IServiceOperationImpl" >
+        <property name="iOperation" ref="IOperation" />
+        <property name="iCompte" ref="ICompte" />
+        <property name="iPersonneMorale" ref="IPersonneMoral" />
+        <property name="iPersonnePhys" ref="IPersonnePhysique" />
+    </bean>
+    <bean id="serviceEmploi" class="lappa.smsbanking.IService.Impl.IServiceEmploiImpl" >
+        <property name="iEmploi" ref="IEmploi" />
+        <property name="iPersonne" ref="IPersonne" />
+    </bean>
+    <bean id="serviceAdresse" class="lappa.smsbanking.IService.Impl.IServiceAdresseImpl" >
+        <property name="iAdresse" ref="IAdresse" />
+        <property name="iPersonne" ref="IPersonne" />
+    </bean>
+    <bean id="serviceChequier" class="lappa.smsbanking.IService.Impl.IServiceChequierImpl" >
+        <property name="iChequier" ref="IChequier" />
+        <property name="iCompte" ref="ICompte" />
+    </bean>
+    <bean id="serviceOffreSpeciale" class="lappa.smsbanking.IService.Impl.IServiceOffreSpecialeImpl" >
+        <property name="iOffreSpeciale" ref="IOffreSpeciale" />
+        <property name="iPersonne" ref="IPersonne" />
+    </bean>
+    <bean id="serviceSms" class="lappa.smsbanking.IService.Impl.IServiceSmsImpl" >
+        <property name="iSms" ref="ISms" />
+        <property name="iPersonne" ref="IPersonne" />
+        <property name="iOperation" ref="IOperation" />
+        <property name="iPersonneMorale" ref="IPersonneMoral" />
+        <property name="iPersonnePhys" ref="IPersonnePhysique" />
+        <property name="iSupport" ref="ISupport" />
+    </bean>
+    <bean id="serviceSmsCompte" class="lappa.smsbanking.IService.Impl.IServiceSmsCompteImpl" >
+        <property name="iSmsCompte" ref="ISmsCompte" />
+        <property name="iPersonneMorale" ref="IPersonneMoral" />
+        <property name="iPersonnePhys" ref="IPersonnePhysique" />
+    </bean>
+    <bean id="servicePersonneMorale" class="lappa.smsbanking.IService.Impl.IServicePersonneMoraleImpl" >
+         <property name="iSmsCompte" ref="ISmsCompte" />
+        <property name="iPersonne" ref="IPersonne" />
+        <property name="iOperation" ref="IOperation" />
+        <property name="iPersonneMorale" ref="IPersonneMoral" />
+    </bean>
+    <bean id="servicePersonnePhysique" class="lappa.smsbanking.IService.Impl.IServicePersonnePhysImpl" >
+        <property name="iSmsCompte" ref="ISmsCompte" />
+        <property name="iPersonne" ref="IPersonne" />
+        <property name="iOperation" ref="IOperation" />
+        <property name="iPersonnePhys" ref="IPersonnePhysique" />
+    </bean>
+    
+    <!-- la source de donnéees DBCP -->
+    
+     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+       
+        <property name="username" value="root"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="password" value=""/>
+        <property name="url" value="jdbc:mysql://localhost/bd_sms_banking"/>
+    
+    </bean>
+    
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="username" value="root"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="password" value=""/>
+        <property name="url" value="jdbc:mysql://localhost:3306/bd_sms_banking?zeroDateTimeBehavior=convertToNull"/>
+    </bean>-->
+    
+<!--     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+       
+        <property name="username" value="root"/>
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="password" value="root"/>
+        <property name="url" value="jdbc:sqlserver://localhost:1433/bd_sms_banking"/>
+    
+    </bean>-->
+
+    
+    <!-- couche de persistance JPA -->
+    
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
+        
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                
+                <property name="showSql" value="true" />  
+              
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+                <property name="generateDdl" value="true" />
+            </bean>
+        </property>
+
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+
+        </property>
+    </bean>
+    
+    <!-- le gestionnaire de transactions -->
+    
+    <tx:annotation-driven transaction-manager="txManager" />
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+    <!-- traduction des exceptions -->
+    
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+    
+    <!-- annotations de persistance -->
+    
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    
+</beans>

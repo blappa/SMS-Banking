@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <ui:include src="menu.xhtml"/><br></br><br></br>
+        <h:outputText value="BackOffice >> Gestion de solde" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <p:panel id="OperCreateDlg"  header="Effectuer une operation">
+
+            <h:form id="OperCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" >
+
+                        <p:outputLabel value="Code Employé (code fournit par la banque): " for="code" />
+                        <p:inputText id="code" value="#{operationBean.code}" title="code" required="true"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Operation" />  
+                        <p:selectOneRadio id="options" value="#{operationBean.operation.nomOperation}" required="true" requiredMessage="le status est obligatoire"  style="width: 275px;">  
+                            <f:selectItem itemLabel="RETRAIT" itemValue="Retrait" />  
+                            <f:selectItem itemLabel="CREDITER" itemValue="Crediter" />  
+                            <f:selectItem itemLabel="TRANSFERER" itemValue="transferer" /> 
+                        </p:selectOneRadio>
+
+                        <p:outputLabel value="Compte D'envoi " for="src" />
+                        <p:inputText id="src" value="#{operationBean.numSrc}" title="src" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="Compte De Réception " for="dest" />
+                        <p:inputText id="dest" value="#{operationBean.numDest}" title="dest" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel for="date"  value="Date Du Jour"/>
+                        <p:calendar id="date"  value="#{operationBean.operation.dateJour}" required="true" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                        <p:outputLabel value="Somme (en FCFA) " for="solde" />
+                        <p:inputText id="solde" value="#{operationBean.operation.soldeCompte}" title="solde compte"  style="width: 275px;"/>
+
+                    </p:panelGrid><br></br><br></br><br></br>
+                    <p:commandButton icon="ui-icon-refresh" actionListener="#{operationBean.saveOperationTransfert}" value="Enregistrer" update=":growl" />
+                    <p:commandButton icon="ui-icon-cancel" value="Effacer" oncomplete="OperCreateForm.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

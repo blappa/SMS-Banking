@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+
+                    <br></br><ui:include src="menu.xhtml"/><br></br>
+                     <h:outputText value="Offres >> Alerte Offres" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+                    <p:panel id="OffreCreateDlg"  header="Offres Voeux">
+
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <h:outputText value="Bonne Année " />  
+                            <p:selectBooleanCheckbox  value="#{offreBean.bannee}"/> 
+
+                            <h:outputText value="Bonne Fete de Mouton " />  
+                            <p:selectBooleanCheckbox value="#{offreBean.mouton}"/> 
+
+                            <h:outputText value="Joyeux Noél " />  
+                            <p:selectBooleanCheckbox  value="#{offreBean.noel}"/> 
+
+                            <h:outputText value="Mise en Place du Crédit " />  
+                            <p:selectBooleanCheckbox  value="#{offreBean.credit}"/> 
+
+                        </h:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{offreBean.sendoffre}" value="Envoyer" update=":growl" ajax="false" /></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <br></br><br></br>
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+
+                    <p:panel id="OffreCreateDlg1"  header="Envoyer Un SMS">
+
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                            <p:outputLabel value="N° Mobile " for="no" />
+                            <p:inputText id="no" value="#{offreBean.num}" title="code" required="true"  style="width: 250px;"/>
+
+                            <p:outputLabel for="obs"  value="Message"/>
+                            <p:inputTextarea id="obs" value="#{offreBean.observation}" style="width:400px;" />
+
+                        </h:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{offreBean.sendSms}" value="Envoyer" update=":growl" ajax="false" /></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

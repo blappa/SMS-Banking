@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CmpteViewDlg" widgetVar="CmpteViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil compte">
+
+            <h:form id="CmpteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{compteBean.compte != null}">
+
+
+                        <h:outputText value="IDClient"/>
+                        <h:outputText value="#{compteBean.compte.id}" title="#{compteBean.compte.id}"  style="width: 275px;"/>
+
+                        <h:outputText value="Sigle "/>
+                        <h:outputText value="#{compteBean.compte.sigle}" title="#{compteBean.compte.sigle}"  style="width: 275px;"/>
+
+                        <h:outputText value="Adresse 1 "/>
+                        <h:outputText value="#{compteBean.compte.adresse1}" title="#{compteBean.compte.adresse1}"  style="width: 275px;"/>
+
+                        <h:outputText value="Adresse 2 "/>
+                        <h:outputText value="#{compteBean.compte.adresse2}" title="#{compteBean.compte.adresse2}"  style="width: 275px;"/>
+
+                        <h:outputText value="Solde compte "/>
+                        <h:outputText value="#{compteBean.compte.solde}" title="#{compteBean.compte.solde}"  style="width: 275px;"/>
+
+                        <h:outputText value="Ville "/>
+                        <h:outputText value="#{compteBean.compte.ville}" title="#{compteBean.compte.ville}"  style="width: 275px;"/>
+
+                        <h:outputText value="Pays "/>
+                        <h:outputText value="#{compteBean.compte.pays}" title="#{compteBean.compte.pays}"  style="width: 275px;"/>
+
+                        <h:outputText value="Téléphone N°1"/>
+                        <h:outputText value="#{compteBean.compte.telephone1}" title="#{compteBean.compte.telephone1}"  style="width: 275px;"/>
+
+                        <h:outputText value="Téléphone N°2 "/>
+                        <h:outputText value="#{compteBean.compte.telephone2}" title="#{compteBean.compte.telephone2}"  style="width: 275px;"/>
+
+                        <h:outputText value="Mode Expiration "/>
+                        <h:outputText value="#{compteBean.compte.modeExpiration}" title="#{compteBean.compte.modeExpiration}"  style="width: 275px;"/>
+
+                        <h:outputText value="Classe Compte"/>
+                        <h:outputText value="#{compteBean.compte.classeCompte}" title="#{compteBean.compte.classeCompte}"  style="width: 275px;"/>
+
+                        <h:outputText value="Date Creation"/>
+                        <h:outputText value="#{compteBean.compte.dateCreation}" title="#{compteBean.compte.dateCreation}"  style="width: 275px;"/>
+
+                        <h:outputText value="Solde"/>
+                        <h:outputText value="#{compteBean.compte.solde}" title="#{compteBean.compte.solde}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Client Physique"/>
+                        <h:outputText value="#{compteBean.compte.idPersonnePhysique.nom}" title="#{compteBean.compte.idPersonnePhysique.nom}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Client Morale"/>
+                        <h:outputText value="#{compteBean.compte.idPersonneMoral.nomEntreprise}" title="#{compteBean.compte.idPersonneMoral.nomEntreprise}"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" onclick="CmpteViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

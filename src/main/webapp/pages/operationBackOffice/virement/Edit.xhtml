@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="4" >
+                        <p:outputLabel value="N° De Controle " for="idC" />
+                        <p:inputText id="idC" value="#{searchBean.virement.numControle}" title="N° Du Controle"  style="width: 180px;"/>
+
+                        <p:outputLabel value="Envoyer Du Compte Du Client " for="numR" />
+                        <p:inputText id="numR" value="#{searchBean.virement.numCompte}" title="Envoyer Do Compte Du Client"  style="width: 170px;"/>
+
+                        <p:outputLabel value="Code Du Fichier " for="codeF" />
+                        <p:inputText id="codeF" value="#{searchBean.virement.codeFichier}" title="Code Du Fichier"  style="width: 180px;"/>
+
+                        <p:outputLabel value="Date " for="date" />
+                        <p:calendar id="date"  value="#{searchBean.virement.dateJour}" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                    </p:panelGrid>
+
+                    <br></br><ui:include src="../menu.xhtml"/><br></br>
+                    <h:outputText value="BackOffice >> Gestion des virements" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+                    <p:panel id="EnvoiCreateDlg"  header="Agence D'Envoi">
+
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="Agence D'Envoi " for="codeA" />
+                            <p:inputText id="codeA"  value="#{searchBean.virement.codeAgenceEnvoi}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Numero Compte " for="num" />
+                            <p:inputText id="num" value="#{searchBean.virement.numCompte}"  title="Numero Compte" style="width: 275px;"/>
+
+                            <p:outputLabel for="civilite"  value="Civilité"/>
+                            <p:selectOneMenu id="civilite" value="#{searchBean.virement.civilite}" style="width: 250px;">
+                                <f:selectItem itemLabel="M" itemValue="M"/>
+                                <f:selectItem itemLabel="Mme" itemValue="Mme"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nom Client " for="nomC" />
+                            <p:inputText id="nomC" value="#{searchBean.virement.nomClient}"  title="Nom Client" style="width: 275px;"/>
+
+                            <p:outputLabel for="type"  value="Type Du Document"/>
+                            <p:selectOneMenu id="type" value="#{searchBean.virement.typeDocument}" style="width: 250px;">
+                                <f:selectItem itemLabel="#" itemValue="#"/>
+                                <f:selectItem itemLabel="*" itemValue="*"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Code Document " for="codeD" />
+                            <p:inputText id="codeD" value="#{searchBean.virement.codeDocument}" title="Code Document" style="width: 275px;"/>
+
+                            <p:outputLabel value="Tél. Portable" for="tel" />
+                            <p:inputText id="tel"  value="#{searchBean.virement.telephone}" style="width: 275px;"/>
+
+                            <p:outputLabel value="E-mail " for="mail" />
+                            <p:inputText  id="mail"  value="#{searchBean.virement.mail}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Adresse 1 " for="adresse" />
+                            <p:inputText  id="adresse"  value="#{searchBean.virement.adresse}" style="width: 400px;"/>
+
+                            <p:outputLabel value="Montant D'opération " for="montant" />
+                            <p:inputText  id="montant"  value="#{searchBean.virement.montant}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Commission " for="commission" />
+                            <p:inputText  id="commission"  value="#{searchBean.virement.commission}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Montant Total " for="montantT" />
+                            <p:inputText  id="montantT"  value="#{searchBean.virement.montant}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Taxe " for="taxe" />
+                            <p:inputText  id="taxe"  value="#{searchBean.virement.taxe}" style="width: 275px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:panel id="RecepCreateDlg"  header="Agence De Réception">
+
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="Agence De Réception " for="codeR" />
+                            <p:inputText id="codeR"  value="#{searchBean.virement.codeAgenceRecep}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Nom Client " for="nom" />
+                            <p:inputText id="nom" value="#{searchBean.virement.nomClient}"  title="Nom Client" style="width: 275px;"/>
+
+                            <p:outputLabel for="civilite"  value="Civilité1"/>
+                            <p:selectOneMenu id="civilite1" value="#{searchBean.virement.civilite}" style="width: 250px;">
+                                <f:selectItem itemLabel="M" itemValue="M"/>
+                                <f:selectItem itemLabel="Mme" itemValue="Mme"/>
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel for="type1"  value="Type Du Document"/>
+                            <p:selectOneMenu id="type1" value="#{searchBean.virement.typeDocument}" style="width: 250px;">
+                                <f:selectItem itemLabel="#" itemValue="#"/>
+                                <f:selectItem itemLabel="*" itemValue="*"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Code Document " for="code1" />
+                            <p:inputText id="code1" value="#{searchBean.virement.codeDocument}" title="Code Document" style="width: 275px;"/>
+
+                            <p:outputLabel value="Tél. Portable" for="tel1" />
+                            <p:inputText id="tel1"  value="#{searchBean.virement.telephone}" style="width: 275px;"/>
+
+                            <p:outputLabel value="E-mail " for="mail1" />
+                            <p:inputText  id="mail1"  value="#{searchBean.virement.mail}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Adresse 1 " for="adresse1" />
+                            <p:inputText  id="adresse1"  value="#{searchBean.virement.adresse}" style="width: 400px;"/>
+
+                            <p:outputLabel value="Question De Sécurité " for="quest1" />
+                            <p:inputText  id="quest1"  value="#{searchBean.virement.question}" style="width: 400px;"/>
+
+                            <p:outputLabel value="Réponse " for="reponse" />
+                            <p:inputText  id="reponse"  value="#{searchBean.virement.reponse}" style="width: 275px;"/>
+
+                            <p:outputLabel value="Remarque " for="remarque" />
+                            <p:inputText  id="remarque"  value="#{searchBean.virement.remarque}" style="width: 275px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{searchBean.updateVirement}" value="Sauvegarder" update=":growl" ajax="false"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="Search" value="Afficher / Modifier"  ajax="false"/></ol>   
+                </ul>
+            </div> 
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

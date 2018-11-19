@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" locale="#{changeLocale.locale}">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <h:outputStylesheet library="css" name="styles.css" /> 
+                <link rel="shortcut icon" type="image/png" href="../../../resources/images/logo.png" />
+                <link rel="shortcut icon" type="image/png" href="../../resources/images/logo.png" />
+                <link rel="shortcut icon" type="image/png" href="../resources/images/logo.png" />
+                <title><ui:insert name="title">CREDIT DU SAHEL</ui:insert></title>
+            </f:facet>
+        </h:head>
+        <h:body> 
+            <p:growl id="growl" life="3000"/>
+            <p:layout fullPage="true" >
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" >
+                    <div id="top">
+                        <div id="top_top">
+                            <ui:insert name="top_top">
+                                <div style="text-align: center;font: normal small-caps 160% fantasy"> SMS - BANKING </div>
+                            </ui:insert>
+                        </div>
+                        <div id="top_bottom">
+                            <ui:insert name="top_bottom"><ui:include src="log.xhtml"/></ui:insert>
+                        </div>
+                    </div>
+                    <div id="bottom1">
+                        <ui:insert name="bottom1">
+                            <h:form style="float: right;">
+                                <h:panelGrid columns="3"> 
+                                    <h:commandLink value="#{msg['welcome.langue1']}" action="#{changeLocale.setFrenchLocale}"/>
+                                    <h:commandLink value="#{msg['welcome.langue2']}" action="#{changeLocale.setEnglishLocale}"/>
+                                </h:panelGrid>    
+                            </h:form>
+                        </ui:insert>
+                    </div>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south"  size="100" closable="true" collapsible="true"/>
+
+                <p:layoutUnit position="west"  header="#{msg['iden_menu']}"  size="175"  collapsible="true" style="padding-bottom: -10%;">
+                    <div id="left_content">
+                        <ui:insert name="top_content"><ui:include src="menu.xhtml" /></ui:insert>
+                    </div>
+                    <!--                   <p:graphicImage value="/resources/images/logo.png"    width="100%" height="20%" />-->
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" size="68%">
+                    <div id="top_content">
+                        <ui:insert name="content_top"> </ui:insert>
+                    </div>
+                    <div id="right_content">
+                        <ui:insert name="content"></ui:insert>
+                    </div>
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:body>
+
+    </f:view>
+</html>
+
+ 

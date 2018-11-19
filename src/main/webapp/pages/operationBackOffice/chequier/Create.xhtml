@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="6" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{chequeBean.personne.codeAgence}" title="Code Agence " required="true"  style="width: 150px;"/>
+
+                        <p:outputLabel value="N° Du Compte " for="idC" />
+                        <p:inputText id="idC" value="#{chequeBean.personne.numeroCompte}" title="N° Du Compte"  style="width: 180px;"/>
+
+                        <p:outputLabel value="N° De Référence De La Demande " for="numR" />
+                        <p:inputText id="numR" value="#{chequeBean.cheque.numReference}" title="N° De Référence"  style="width: 170px;"/>
+
+                    </p:panelGrid>
+
+                    <br></br><ui:include src="../menu.xhtml"/><br></br>
+                    <h:outputText value="BackOffice >> Gestion des chéquiers" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+                    <p:panel id="ChequeCreateDlg"  header="Détail Du Chèquier">
+
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="Date D'émission " for="emi" />
+                            <p:calendar id="emi"  value="#{chequeBean.cheque.dateEmission}" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                            <p:outputLabel for="typeChequier"  value="Type Chequier"/>
+                            <p:selectOneMenu id="typeChequier" value="#{chequeBean.cheque.typeChequier}" style="width: 250px;">
+                                <f:selectItem itemLabel="#" itemValue="#"/>
+                                <f:selectItem itemLabel="*" itemValue="*"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nombre Pages Du Chéquier " for="nbrePage" />
+                            <p:inputText id="nbrePage" value="#{chequeBean.cheque.nbrePage}"  title="Nombre Page" style="width: 275px;"/>
+
+                            <p:outputLabel value="Préfixe Chequier " for="prefixeChequier" />
+                            <p:inputText id="prefixeChequier" value="#{chequeBean.cheque.prefixeChequier}" title="Préfixe Chequier" style="width: 275px;"/>
+
+                            <p:outputLabel value="Début Du Chèque" for="dateDebut" />
+                            <p:calendar id="dateDebut"  value="#{chequeBean.cheque.dateDebut}" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                            <p:outputLabel value="Date Fin " for="dateFin" />
+                            <p:calendar id="dateFin"  value="#{chequeBean.cheque.dateFin}" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{chequeBean.saveChequier}" value="Sauvegarder" update=":growl"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="Search" value="Afficher"  ajax="false"/></ol>   
+                </ul>
+            </div> 
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

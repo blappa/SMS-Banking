@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <ui:include src="menu.xhtml"/><br></br>
+        <h:outputText value="Administrateur >> Utilisateur" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+            <h:panelGroup>
+            <div id="datalist">
+                <p:panel id="UtilisateurCreateDlg"  header="Détail De Connection">
+
+                    <p:panelGrid columns="4" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{personneBean.personne.codeAgence}" title="code" required="true"  style="width: 180px;"/>
+
+                        <p:outputLabel value="ID Du Client " for="idC" />
+                        <p:inputText id="idC" value="#{personneBean.personne.idClient}" title="ID"  style="width: 180px;"/>
+
+                        <p:outputLabel value="Login " for="nomC" />
+                        <p:inputText id="nomC" value="#{personneBean.personne.login}" title="nom"  style="width: 180px;"/>
+
+                        <p:outputLabel value="Mot De Passe " for="passwd" />
+                        <p:password id="passwd" required="true" value="#{personneBean.pwd}" style="width: 190px;" />
+
+                    </p:panelGrid>
+                </p:panel>
+            </div> 
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{personneBean.saveLogin}" value="Sauvegarder" update=":PersonneListForm:datalistA,:growl"  /></ol>
+                </ul>
+            </div> 
+            </h:panelGroup>
+        </h:form>
+        <ui:include src="ListUser.xhtml"/>
+    </ui:define>
+
+</ui:composition>
+

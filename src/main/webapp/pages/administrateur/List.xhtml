@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:form id="AgenceListForm">
+        <div id="datalist">
+            <p:panel header="Liste Des Agences">
+                <p:dataTable id="datalistA" value="#{agenceBean.agences}" var="item"  scrollRows="20"  
+                             scrollable="true" liveScroll="true" scrollHeight="150"
+                             selectionMode="single" selection="#{agenceBean.agence}"
+                             rowKey="#{item.id}"
+                             emptyMessage="aucune agence enregistrée"
+                             rowIndexVar="index"
+                             >
+                    <p:column >
+                        <h:outputText value="#{index+1}"/>
+                    </p:column>
+
+                    <p:column>
+                        <h:outputText value="#{item.nomAgence}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{item.codeAgence}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{item.pays}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{item.ville}"/>
+                    </p:column>
+                    <p:column >
+                        <h:outputText value="#{item.adresse}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </div>
+        <div id="bouton">
+            <ul>  
+                 <ol><p:commandButton id="editButton" icon="ui-icon-search" action="#{searchBean.afficher}" value="Modifier"  ajax="false" /></ol>   
+                <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{agenceBean.delete}" update=":growl,datalistA"/></ol>   
+                <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":AgenceViewForm" oncomplete="AgenceViewDialog.show()"/></ol> 
+            </ul>
+
+        </div>
+
+    </h:form>
+    <ui:include src="View.xhtml"/>
+</ui:composition>

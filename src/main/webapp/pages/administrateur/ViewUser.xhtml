@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonneViewDlg" widgetVar="PersonneViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil Utilisateur">
+            <h:outputText value="Administrateur >> Utilisateur" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="PersonneViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personneBean.personnePhysique !=null}">
+                        <h:outputText value="Code Agence"/>
+                        <h:outputText value="#{personneBean.personnePhysique.idPersonne.codeAgence}" title="#{personneBean.personnePhysique.idPersonne.codeAgence}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Client "/>
+                        <h:outputText value="#{personneBean.personnePhysique.nom}" title="#{personneBean.personnePhysique.nom}"  style="width: 275px;"/>
+
+                        <h:outputText value="Login "/>
+                        <h:outputText value="#{personneBean.personnePhysique.idPersonne.login}" title="#{personneBean.personnePhysique.idPersonne.login}"  style="width: 275px;"/>
+
+                        <h:outputText value="Numéro Compte "/>
+                        <h:outputText value="#{personneBean.personnePhysique.idPersonne.numeroCompte}" title="#{personneBean.personnePhysique.idPersonne.numeroCompte}"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" oncomplete="PersonneViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

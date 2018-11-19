@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+         <h:outputText value="Client >>Adresse" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="AdresseListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Adresses">
+
+                    <p:dataTable id="datalist" value="#{adresseBean.adresses}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{adresseBean.adresse}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="No"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.typeAdresse}" filterBy="#{item.typeAdresse}">
+                            <f:facet name="header">
+                                <h:outputText value="Type Adresse"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeAdresse}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.ville}" filterBy="#{item.ville}">
+                            <f:facet name="header">
+                                <h:outputText value="Ville"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ville}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.adresse1}" filterBy="#{item.adresse1}">
+                            <f:facet name="header">
+                                <h:outputText value="Adresse 1"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.adresse2}" filterBy="#{item.adresse2}">
+                            <f:facet name="header">
+                                <h:outputText value="Adresse 2"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse2}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.telPortable}" filterBy="#{item.telPortable}">
+                            <f:facet name="header">
+                                <h:outputText value="Tel. Portable"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telPortable}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.telephone1}" filterBy="#{item.telephone1}">
+                            <f:facet name="header">
+                                <h:outputText value="Téléphone N=°1"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephone1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.telephone2}" filterBy="#{item.telephone2}">
+                            <f:facet name="header">
+                                <h:outputText value="Téléphone N=°2"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephone2}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.email}" filterBy="#{item.email}">
+                            <f:facet name="header">
+                                <h:outputText value="E-mail"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.zipCode}" filterBy="#{item.zipCode}">
+                            <f:facet name="header">
+                                <h:outputText value="Zip Code"/>
+                            </f:facet>
+                            <h:outputText value="#{item.zipCode}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.telecopieur}" filterBy="#{item.telecopieur}">
+                            <f:facet name="header">
+                                <h:outputText value="N° Du Télécopieur"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telecopieur}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+               <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="createButton" icon="ui-icon-plus"  value="Ajouter" action="Create" ajax="false"/></ol>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{adresseBean.delete}" update=":growl,datalist"/></ol>   
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search"  value="Rechercher" action="Search" ajax="false"/></ol>   
+                    <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":AdresseViewForm" oncomplete="AdresseViewDialog.show()"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="ViewAdresse.xhtml"/>
+    </ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <!-- JSF and Spring are integrated -->
+    <application>
+        <el-resolver>
+            org.springframework.web.jsf.el.SpringBeanFacesELResolver
+        </el-resolver>
+        <resource-bundle>
+            <base-name>messages </base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>admin</from-outcome>
+            <to-view-id>/pages/accueil.xhtml</to-view-id>
+            <redirect >/pages/accueil.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/administrateur/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditAgence</from-outcome>
+            <to-view-id>/pages/administrateur/update.xhtml</to-view-id>
+            <redirect >/pages/administrateur/update.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/administrateur/choix.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>affiche</from-outcome>
+            <to-view-id>/pages/administrateur/choix.xhtml</to-view-id>
+            <redirect >/pages/administrateur/choix.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/persPhysique/PersonnePhys.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/utilisateur/persPhysique/Search.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persPhysique/Search.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/utilisateur/persPhysique/ListPersPhys.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persPhysique/ListPersPhys.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/utilisateur/persPhysique/PersonnePhys.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persPhysique/PersonnePhys.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/persPhysique/ListPersPhys.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Create</from-outcome>
+            <to-view-id>/pages/utilisateur/persPhysique/PersonnePhys.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persPhysique/PersonnePhys.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/persMorale/PersonneMorale.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/utilisateur/persMorale/Search.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persMorale/Search.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/utilisateur/persMorale/ListPersMorale.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persMorale/ListPersMorale.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/utilisateur/persMorale/PersonneMorale.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persMorale/PersonneMorale.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-view-id>/pages/utilisateur/persMorale/ListPersMorale.xhtml</from-view-id>
+            <from-outcome>Create</from-outcome>
+            <to-view-id>/pages/utilisateur/persMorale/PersonneMorale.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persMorale/PersonneMorale.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/adresse/Adresse.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/utilisateur/adresse/Search.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/adresse/Search.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/utilisateur/adresse/ListAdresse.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/adresse/ListAdresse.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/emploi/Emploi.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/utilisateur/emploi/Search.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/emploi/Search.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/utilisateur/emploi/ListEmploi.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/emploi/ListEmploi.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/offre/Offre.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/utilisateur/offre/Search.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/offre/Search.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/utilisateur/offre/ListOffre.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/offre/ListOffre.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/offre/ListOffre.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Create</from-outcome>
+            <to-view-id>/pages/utilisateur/offre/Offre.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/offre/Offre.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/persPhysique/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditPersPhys</from-outcome>
+            <to-view-id>/pages/utilisateur/persPhysique/EditPersPhys.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persPhysique/EditPersPhys.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>EditPersMorale</from-outcome>
+            <to-view-id>/pages/utilisateur/persMorale/EditPersMorale.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persMorale/EditPersMorale.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/persMorale/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditPersMorale</from-outcome>
+            <to-view-id>/pages/utilisateur/persMorale/EditPersMorale.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persMorale/EditPersMorale.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>EditPersPhys</from-outcome>
+            <to-view-id>/pages/utilisateur/persPhysique/EditPersPhys.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/persPhysique/EditPersPhys.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/adresse/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditAdresse</from-outcome>
+            <to-view-id>/pages/utilisateur/adresse/EditAdresse.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/adresse/EditAdresse.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/emploi/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditEmploi</from-outcome>
+            <to-view-id>/pages/utilisateur/emploi/EditEmploi.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/emploi/EditEmploi.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/utilisateur/offre/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditOffre</from-outcome>
+            <to-view-id>/pages/utilisateur/offre/EditOffre.xhtml</to-view-id>
+            <redirect >/pages/utilisateur/offre/EditOffre.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/compte/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditCompte</from-outcome>
+            <to-view-id>/pages/compte/Edit.xhtml</to-view-id>
+            <redirect >/pages/compte/Edit.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/compte/Create.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/compte/Create.xhtml</to-view-id>
+            <redirect >/pages/compte/Create.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/operationBackOffice/historique/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/operationBackOffice/historique/List.xhtml</to-view-id>
+            <redirect >/pages/operationBackOffice/historique/List.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/Create.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/sms/compte/List.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/List.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/sms/compte/Create.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>kannel</from-outcome>
+            <to-view-id>/pages/sms/compte/Create_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create_1.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/sms/compte/Search_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Search_1.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/Create_1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/sms/compte/List.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/List.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/sms/compte/Create_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create_1.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>twilio</from-outcome>
+            <to-view-id>/pages/sms/compte/Create.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/sms/compte/Search.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Search.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/CreateCompteParent.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/sms/compte/ListCompteParent.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/ListCompteParent.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/sms/compte/CreateCompteParent.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/CreateCompteParent.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/Edit.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>create</from-outcome>
+            <to-view-id>/pages/sms/compte/Create.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create.xhtml</redirect>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/sms/compte/List.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/List.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/sms/compte/Create.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>kannel</from-outcome>
+            <to-view-id>/pages/sms/compte/Create_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create_1.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/sms/compte/Search_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Search_1.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/Edit_1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>create</from-outcome>
+            <to-view-id>/pages/sms/compte/Create_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create_1.xhtml</redirect>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/pages/sms/compte/List.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/List.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>save</from-outcome>
+            <to-view-id>/pages/sms/compte/Create_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create_1.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>twilio</from-outcome>
+            <to-view-id>/pages/sms/compte/Create.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Create.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/sms/compte/Search.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Search.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/Search_1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditSmsCompte</from-outcome>
+            <to-view-id>/pages/sms/compte/Edit_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Edit_1.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/sms/compte/Search_1.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Search_1.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/sms/compte/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditSmsCompte</from-outcome>
+            <to-view-id>/pages/sms/compte/Edit.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Edit.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/sms/compte/Search.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Search.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>search</from-outcome>
+            <to-view-id>/pages/sms/compte/Edit.xhtml</to-view-id>
+            <redirect >/pages/sms/compte/Edit.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/operationBackOffice/chequier/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditCheque</from-outcome>
+            <to-view-id>/pages/operationBackOffice/chequier/Edit.xhtml</to-view-id>
+            <redirect >/pages/operationBackOffice/chequier/Edit.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/operationBackOffice/virement/Create.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Search</from-outcome>
+            <to-view-id>/pages/operationBackOffice/virement/Search.xhtml</to-view-id>
+            <redirect >/pages/operationBackOffice/virement/Search.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/operationBackOffice/virement/Search.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>EditVirement</from-outcome>
+            <to-view-id>/pages/operationBackOffice/virement/Edit.xhtml</to-view-id>
+            <redirect >/pages/operationBackOffice/virement/Edit.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/operationBackOffice/virement/Create.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Transfert</from-outcome>
+            <to-view-id>/pages/operationBackOffice/virement/Create.xhtml</to-view-id>
+            <redirect >/pages/operationBackOffice/virement/Create.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/operationCaisse/Crediter.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Crediter</from-outcome>
+            <to-view-id>/pages/operationCaisse/Crediter.xhtml</to-view-id>
+            <redirect >/pages/operationCaisse/Crediter.xhtml</redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Debiter</from-outcome>
+            <to-view-id>/pages/operationCaisse/Debiter.xhtml</to-view-id>
+            <redirect >/pages/operationCaisse/Debiter.xhtml</redirect>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

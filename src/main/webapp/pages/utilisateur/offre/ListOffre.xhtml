@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <h:outputText value="Client >> Offre Spéciale" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="OffreListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Offres">
+
+                    <p:dataTable id="datalist" value="#{offreBean.offreSpeciales}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{offreBean.offreSpeciale}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="No"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonne.idClient}" filterBy="#{item.idPersonne.idClient}">
+                            <f:facet name="header">
+                                <h:outputText value="ID Client"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonne.idClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonne.nomClient}" filterBy="#{item.idPersonne.nomClient}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Client"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonne.nomClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.recevoireSalutation}" filterBy="#{item.recevoireSalutation}">
+                            <f:facet name="header">
+                                <h:outputText value="Peut Reccevoir Des Salutations"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recevoireSalutation}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.recevoireOffreSpeciale}" filterBy="#{item.recevoireOffreSpeciale}">
+                            <f:facet name="header">
+                                <h:outputText value="Peut Reccevoir Des Offres Spéciales"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recevoireOffreSpeciale}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.recevoireReleveCompte}" filterBy="#{item.recevoireReleveCompte}">
+                            <f:facet name="header">
+                                <h:outputText value="Peut Reccevoir Relevé De Compte Par Email"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recevoireReleveCompte}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.recevoireAlerte}" filterBy="#{item.recevoireAlerte}">
+                            <f:facet name="header">
+                                <h:outputText value="Peut Reccevoir Les Alertes Par SMS"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recevoireAlerte}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="createButton" icon="ui-icon-plus"  value="Ajouter" action="Create" ajax="false"/></ol>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{offreBean.delete}" update=":growl,datalist"/></ol>   
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search"  value="Rechercher" action="Search" ajax="false"/></ol>   
+                    <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":OffreViewForm" oncomplete="OffreViewDialog.show()"/></ol> 
+                    <ol><p:commandButton id="offreButton" icon="ui-icon-mail-closed" actionListener="#{offreBean.nosOffre}" value="Envoyer Les Offres"  ajax="false"/></ol>  
+                </ul>
+
+            </div>
+
+        </h:form>
+        <ui:include src="ViewOffre.xhtml"/>
+    </ui:define>
+
+</ui:composition>
+

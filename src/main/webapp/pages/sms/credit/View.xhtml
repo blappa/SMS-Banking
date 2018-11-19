@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SmsViewDlg" widgetVar="SmsViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil SMS">
+             <ui:include src="../menu.xhtml"/><br></br><br></br><h:outputText value="Gestion SMS >> SMS Crédit" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="SmsViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{smsBean.sms != null}">
+
+
+                        <h:outputText value="IDSMS"/>
+                        <h:outputText value="#{smsBean.sms.id}" title="#{smsBean.sms.id}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Client Personne Physique "/>
+                        <h:outputText value="#{smsBean.sms.idPersonnePhysique.idPersonne.nomClient} N°= compte : #{smsBean.sms.idPersonnePhysique.idPersonne.numeroCompte}" title="#{smsBean.sms.idPersonnePhysique.idPersonne.nomClient}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Client Personne Morale "/>
+                        <h:outputText value="#{smsBean.sms.idPersonneMoral.idPersonne.nomClient}  N°= compte : #{smsBean.sms.idPersonneMoral.idPersonne.numeroCompte}" title="#{smsBean.sms.idPersonneMoral.idPersonne.nomClient}"  style="width: 275px;"/>
+
+                        <h:outputText value="Classe Compte "/>
+                        <h:outputText value="#{smsBean.sms.idCompte.classeCompte}" title="#{smsBean.sms.idCompte.classeCompte}"  style="width: 275px;"/>
+
+                        <h:outputText value="Téléphone Expéditeur "/>
+                        <h:outputText value="#{smsBean.sms.telephoneExp}" title="#{smsBean.sms.telephoneExp}"  style="width: 275px;"/>
+
+                        <h:outputText value="Date D'expédition "/>
+                        <h:outputText value="#{smsBean.sms.dateJour}" title="#{smsBean.sms.dateJour}"  style="width: 275px;"/>
+
+                        <h:outputText value="Message"/>
+                        <h:outputText value="#{smsBean.sms.message}" title="#{smsBean.sms.message}"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" onclick="SmsViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

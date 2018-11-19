@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <ui:include src="menu.xhtml"/><br></br>
+        <h:outputText value="Administrateur >> Agence" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panel header="Enregistrer Une Angence">
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="Nom Agence " for="nom" />
+                            <p:inputText id="nom" value="#{agenceBean.agence.nomAgence}" title="nom Agence" required="true"  style="width: 320px;"/>
+
+                            <p:outputLabel value="Code Agence " for="code" />
+                            <p:inputText id="code" value="#{agenceBean.agence.codeAgence}" title="code"  style="width: 320px;"/>
+
+                            <p:outputLabel for="pays"  value="Pays"/>
+                            <p:selectOneMenu id="pays" value="#{agenceBean.agence.pays}" style="width: 320px;">
+                                <f:selectItem itemLabel="Cameroun" itemValue="Cameroun"/>
+                                <f:selectItem itemLabel="Tchad" itemValue="Tchad"/>
+                                <f:selectItem itemLabel="Nigéria" itemValue="Nigéria"/>
+                                <f:selectItem itemLabel="Gabon" itemValue="Gabon"/>
+                                <f:selectItem itemLabel="..." itemValue="..."/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="ville"  value="Ville"/>
+                            <p:selectOneMenu id="ville" value="#{agenceBean.agence.ville}" style="width: 320px;">
+                                <f:selectItem itemLabel="Yaoundé" itemValue="Yaoundé"/>
+                                <f:selectItem itemLabel="Douala" itemValue="Douala"/>
+                                <f:selectItem itemLabel="Maroua" itemValue="Maroua"/>
+                                <f:selectItem itemLabel="Garoua" itemValue="Garoua"/>
+                                <f:selectItem itemLabel="..." itemValue="..."/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Adresse " for="adr" />
+                            <p:inputText id="adr" value="#{agenceBean.agence.adresse}" title="Adresse Agence" required="true"  style="width: 320px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>     
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{agenceBean.saveAgence}" value="Sauvegarder" update=":AgenceListForm:datalistA,:growl" /></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+        </h:form>
+        <ui:include src="List.xhtml"/>
+    </ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:outputText value="Compte" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{compteBean.personne.codeAgence}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="ID Du Client " for="idC" />
+                        <p:inputText id="idC" value="#{compteBean.personne.idClient}" title="ID"  style="width: 275px;"/>
+
+                        <p:outputLabel value="Nom Du Client " for="nomC" />
+                        <p:inputText id="nomC" value="#{compteBean.personne.nomClient}" title="nom"  style="width: 275px;"/>
+                    </p:panelGrid>
+
+                    <p:panel visible="#{!empty compteBean.numCmpte}">
+                        <h:outputText value="Votre Numéro Compte est : #{compteBean.numCmpte}"  style="width: 90px;color: green; font-size: xx-large"/>
+                    </p:panel>
+                    <br></br>
+
+                    <p:panel id="UtilisateurCreateDlg"  header="Détails Du Compte">
+
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="En Sigle " for="sigle" />
+                            <p:inputText id="sigle" value="#{compteBean.compte.sigle}" title="En Sigle"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Ville " for="ville" />
+                            <p:selectOneMenu id="ville" value="#{compteBean.compte.ville}" style="width: 250px;">
+                                <f:selectItem itemLabel="Yaounde" itemValue="Yaounde"/>
+                                <f:selectItem itemLabel="Douala" itemValue="Douala"/>
+                                <f:selectItem itemLabel="Maroua" itemValue="Maroua"/>
+                                <f:selectItem itemLabel="Garoua" itemValue="Garoua"/>
+                                <f:selectItem itemLabel="..." itemValue="..."/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Adresse 1 " for="adresse1" />
+                            <p:inputText id="adresse1" value="#{compteBean.compte.adresse1}" title="adresse 1" style="width: 275px;"/>
+
+                            <p:outputLabel value="Adresse 2 " for="adresse2" />
+                            <p:inputText id="adresse2" value="#{compteBean.compte.adresse2}" title="adresse 2" style="width: 275px;"/>
+
+                            <p:outputLabel value="Téléphone N=°1: " for="tel1" />
+                            <p:inputText id="tel1" value="#{compteBean.compte.telephone2}" title="Téléphone N=°2"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Téléphone N=°2: " for="tel2" />
+                            <p:inputText id="tel2" value="#{compteBean.compte.telephone1}" title="Téléphone N=°1"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Pays " for="pays" />
+                            <p:selectOneMenu id="pays" value="#{compteBean.compte.pays}" style="width: 250px;">
+                                <f:selectItem itemLabel="Cameroun" itemValue="Cameroun"/>
+                                <f:selectItem itemLabel="Tchad" itemValue="Tchad"/>
+                                <f:selectItem itemLabel="Nigéria" itemValue="Nigéria"/>
+                                <f:selectItem itemLabel="Gabon" itemValue="Gabon"/>
+                                <f:selectItem itemLabel="..." itemValue="..."/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Mode Expiration " for="modeExpiration" />
+                            <p:selectOneRadio id="modeExpiration" value="#{compteBean.compte.modeExpiration}"   style="width: 275px;">  
+                                <f:selectItem itemLabel="#" itemValue="#" />  
+                                <f:selectItem itemLabel="*" itemValue="*" /> 
+                            </p:selectOneRadio>
+
+                            <p:outputLabel value="Classe Compte " for="classeCompte" />
+                            <p:selectOneRadio id="classeCompte" value="#{compteBean.compte.classeCompte}"   style="width: 275px;">  
+                                <f:selectItem itemLabel="Epargne" itemValue="Epargne" /> 
+                                <f:selectItem itemLabel="Courant" itemValue="Courant" /> 
+                            </p:selectOneRadio>
+
+                            <p:outputLabel value="Solde " for="solde" />
+                            <p:inputText id="solde" value="#{compteBean.compte.solde}" title="solde" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="E-mail: " for="mail" />
+                            <p:inputText id="mail" value="#{compteBean.compte.email}" title="E-mail"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Ouvert Le " for="ouv" />
+                            <p:calendar id="ouv"  value="#{compteBean.compte.dateCreation}" required="true" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{compteBean.saveCompte}" value="Sauvegarder" update=":growl" ajax="false"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="Search" value="Afficher"  ajax="false"/></ol>   
+                    <ol><p:commandButton icon="ui-icon-cancel" action="#{compteBean.effacer}" value="Effacer"/></ol> 
+                </ul>
+            </div> 
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

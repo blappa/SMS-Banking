@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br>
+        <h:outputText value="Gestion SMS >> Compte SMS" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="f1">
+            <h:panelGroup id="display">
+                <div id="datalist"> 
+                    <p:panel id="OperCreateDlg"  header="Enregistrer Un Compte Client">
+                        <p:panel visible="#{!empty smsBean.smsCompte.idClient}">
+                            <h:outputText value="Votre Code Pin est : #{smsBean.pin}"  style="width: 90px;color: green; font-size: xx-large"/>
+                        </p:panel>
+                        <p:panelGrid columns="2" >
+
+                            <p:outputLabel value="ID Du Compte Parent " for="idP" />
+                            <p:inputText id="idP" value="#{smsBean.idClient}" title="ID"  style="width: 260px;"/>
+
+                            <p:outputLabel value="ID Du Client " for="idC" />
+                            <p:inputText id="idC" value="#{smsBean.smsCompte.idClient}" title="ID"  style="width: 260px;"/>
+
+                            <p:outputLabel value="N° Mobile Client" for="num" />
+                            <p:inputText id="num" value="#{smsBean.smsCompte.mobile}" title="Mobile" required="true"  style="width: 260px;"/>
+
+                        </p:panelGrid>
+
+                    </p:panel>
+                </div>
+                <div id="bouton1">
+                    <ul>   
+                        <ol>  <p:commandButton icon="ui-icon-play" actionListener="#{smsBean.saveCompteClient}" value="Suvegarder" update=":growl" ajax="false" /></ol>
+                    </ul>
+                </div>
+            </h:panelGroup>
+        </h:form>
+
+        <h:form id="f2">
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton icon="ui-icon-cancel" action="#{smsBean.effacer}" value="Effacer"  ajax="false"/></ol> 
+                    <ol>
+                        <p:menubar>
+                            <p:submenu label="Options" >
+                                <p:menuitem title=" Kannel" icon="ui-icon-clipboard" value="kannel"  url="/pages/sms/compte/Create_1.xhtml" onclick="fmenu.submit();"  style="color: black;"></p:menuitem>  
+                                <p:menuitem title="list" icon="ui-icon-document" value="Compte Parent"  url="/pages/sms/compte/CreateCompteParent.xhtml" onclick="fmenu.submit();"  style="color: black;"></p:menuitem> 
+                            </p:submenu>
+                        </p:menubar>
+                    </ol>
+                </ul>
+            </div> 
+        </h:form>
+    </ui:define>
+</ui:composition>
+

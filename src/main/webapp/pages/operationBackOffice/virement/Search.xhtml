@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <h:outputText value="BackOffice >> Gestion des virements" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <p:panel id="VirementCreateDlg"  header="Rechercher Un Virement">
+
+            <h:form id="VirementCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" >
+
+                         <p:outputLabel value="N° De Controle " for="idC" />
+                         <p:inputText id="idC" value="#{searchBean.virement.numControle}" title="N° Du Controle"  style="width: 180px;"/>
+
+                        <p:outputLabel value="Code Du Fichier " for="codeF" />
+                        <p:inputText id="codeF" value="#{searchBean.virement.codeFichier}" title="Code Du Fichier"  style="width: 180px;"/>
+
+                    </p:panelGrid><br></br><br></br><br></br>
+                    <p:commandButton icon="ui-icon-zoomin"  value="Afficher" action="#{searchBean.searchVirement}" ajax="false"/>
+                    <p:commandButton icon="ui-icon-cancel" value="Effacer" oncomplete="VirementCreateForm.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:panel>
+    </ui:define>
+</ui:composition>

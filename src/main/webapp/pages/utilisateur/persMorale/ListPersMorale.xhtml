@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+         <h:outputText value="Client >> Morale" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br><br></br>
+        <h:form id="UtilisateurListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Clients Personnes Morales">
+
+                    <p:dataTable id="datalist" value="#{personneBean.personneMorales}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{personneBean.personneMorale}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="No"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.nomEntreprise}" filterBy="#{item.nomEntreprise}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Entreprise"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomEntreprise}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.constitution}" filterBy="#{item.constitution}">
+                            <f:facet name="header">
+                                <h:outputText value="Constitution"/>
+                            </f:facet>
+                            <h:outputText value="#{item.constitution}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.dateEnregistrement}" filterBy="#{item.dateEnregistrement}">
+                            <f:facet name="header">
+                                <h:outputText value="Date Enregistrement"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateEnregistrement}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.numEnregistrement}" filterBy="#{item.numEnregistrement}">
+                            <f:facet name="header">
+                                <h:outputText value="Numero Enregistrement"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numEnregistrement}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.secteurActivite}" filterBy="#{item.secteurActivite}">
+                            <f:facet name="header">
+                                <h:outputText value="Secteur Activite"/>
+                            </f:facet>
+                            <h:outputText value="#{item.secteurActivite}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.siteWeb}" filterBy="#{item.siteWeb}">
+                            <f:facet name="header">
+                                <h:outputText value="Site Web"/>
+                            </f:facet>
+                            <h:outputText value="#{item.siteWeb}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.commentaire}" filterBy="#{item.commentaire}">
+                            <f:facet name="header">
+                                <h:outputText value="Commentaire"/>
+                            </f:facet>
+                            <h:outputText value="#{item.commentaire}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.dateOuverture}" filterBy="#{item.dateOuverture}">
+                            <f:facet name="header">
+                                <h:outputText value="Date Ouverture"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOuverture}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.ouvertPar}" filterBy="#{item.ouvertPar}">
+                            <f:facet name="header">
+                                <h:outputText value="Ouvert Par"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ouvertPar}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="createButton" icon="ui-icon-plus"  value="Ajouter" action="Create" ajax="false"/></ol>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{personneBean.deleteUserMorale}" update=":growl,datalist"/></ol>   
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search"  value="Rechercher" action="Search" ajax="false"/></ol>   
+                    <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher Profil" update=":UtilisateurViewForm" oncomplete="UtilisateurViewDialog.show()"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="ViewPersMorale.xhtml"/>
+    </ui:define>
+</ui:composition>

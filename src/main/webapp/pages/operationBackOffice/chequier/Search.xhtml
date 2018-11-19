@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <h:outputText value="BackOffice >> Gestion des chéquiers" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <p:panel id="UtilisateurCreateDlg"  header="Rechercher Un Chèque">
+
+            <h:form id="UtilisateurCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" >
+
+                        <p:outputLabel value="Code Client (code fournit par la banque): " for="code" />
+                        <p:inputText id="code" value="#{searchBean.code}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="N° De Référence Du Chèque " for="numR" />
+                        <p:inputText id="numR" value="#{searchBean.numR}" title="N° De Référence"  style="width: 170px;"/>
+
+                    </p:panelGrid><br></br><br></br><br></br>
+                    <p:commandButton icon="ui-icon-zoomin" action="#{searchBean.searchCheque}" value="Afficher" ajax="false"/>
+                    <p:commandButton icon="ui-icon-cancel" value="Effacer" oncomplete="UtilisateurCreateForm.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:panel>
+    </ui:define>
+</ui:composition>

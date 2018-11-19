@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:form id="f1">
+
+            <h:panelGroup id="display">
+                <br></br><ui:include src="menu.xhtml"/><br></br>
+                <h:outputText value="Offres >> Valider Crédit" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br><br></br>
+                <p:panelGrid id="fe" columns="6" >
+                    <p:outputLabel value="Code Agence " for="codeP" />
+                    <p:inputText id="codeP" value="#{compteBean.personne.codeAgence}" title="code" required="true"  style="width: 150px;"/>
+
+                    <p:outputLabel value="Numéro Du Compte Client " for="numC" />
+                    <p:inputText id="numC" value="#{compteBean.personne.numeroCompte}" title="numéro"  style="width: 170px;"/>
+
+                </p:panelGrid>
+                <br></br> <br></br> <br></br>
+                <p:commandButton icon="ui-icon-refresh" actionListener="#{compteBean.sendCredit}" value="Envoyer" update=":growl"/>
+            </h:panelGroup>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

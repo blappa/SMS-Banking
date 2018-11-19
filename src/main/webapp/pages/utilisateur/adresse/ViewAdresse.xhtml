@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseViewDlg" widgetVar="AdresseViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil">
+             <h:outputText value="Client >> Adresse" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="AdresseViewForm">
+
+                <h:panelGroup id="display">
+
+                    <p:panelGrid columns="2" rendered="#{adresseBean.adresse != null}">
+
+                        <h:outputText value="Type D'adresse"/>
+                        <h:outputText value="#{adresseBean.adresse.typeAdresse}" title="#{adresseBean.adresse.typeAdresse}"  style="width: 275px;"/>
+
+                        <h:outputText value="Ville"/>
+                        <h:outputText value="#{adresseBean.adresse.ville}" title="#{adresseBean.adresse.ville}"  style="width: 275px;"/>
+
+                        <h:outputText value="Adresse 1"/>
+                        <h:outputText value="#{adresseBean.adresse.adresse1}" title="#{adresseBean.adresse.adresse1}"  style="width: 275px;"/>
+
+                        <h:outputText value="Adresse 2"/>
+                        <h:outputText value="#{adresseBean.adresse.adresse2}" title="#{adresseBean.adresse.adresse2}"  style="width: 275px;"/>
+
+                        <h:outputText value="Pays"/>
+                        <h:outputText value="#{adresseBean.adresse.pays}" title="#{adresseBean.adresse.pays}"  style="width: 275px;"/>
+
+                        <h:outputText value="Tél. Portable"/>
+                        <h:outputText value="#{adresseBean.adresse.telPortable}" title="#{adresseBean.adresse.telPortable}"  style="width: 275px;"/>
+
+                        <h:outputText value="Téléphone N=°1"/>
+                        <h:outputText value="#{adresseBean.adresse.telephone1}" title="#{adresseBean.adresse.telephone1}"  style="width: 275px;"/>
+
+                        <h:outputText value="Téléphone N=°2 " />
+                        <h:outputText  value="#{adresseBean.adresse.telephone2}" title="#{adresseBean.adresse.telephone2}" style="width: 275px;"/>
+
+                        <h:outputText value="E-mail " />
+                        <h:outputText  value="#{adresseBean.adresse.email}" title="E-mail"  style="width: 275px;"/>
+
+                        <h:outputText value=" zipCode " />
+                        <h:outputText value="#{adresseBean.adresse.zipCode}" title="zip Code"  style="width: 275px;"/>
+
+                        <h:outputText value="N° Du Télécopieur" />
+                        <h:outputText value="#{adresseBean.adresse.telecopieur}" title="telecopieur"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                     <p:commandButton icon="ui-icon-close" value="Fermer" oncomplete="AdresseViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

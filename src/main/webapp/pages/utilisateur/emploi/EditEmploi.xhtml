@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:outputText value="Client >> Emploi" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{searchBean.personne.codeAgence}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="ID Du Client " for="idC" />
+                        <p:inputText id="idC" value="#{searchBean.personne.idClient}" title="ID"  disabled="true" style="width: 275px;color: green; font-size: x-large"/>
+
+                        <p:outputLabel value="Nom Du Client " for="nomC" />
+                        <p:inputText id="nomC" value="#{searchBean.personne.nomClient}" title="nom"  style="width: 275px;"/>
+
+                        <h:outputText value="Type De Client " />  
+                        <p:selectOneRadio id="options" value="#{searchBean.personne.typePersonne}" required="true" requiredMessage="le status est obligatoire"  style="width: 275px; float: right">  
+                            <f:selectItem itemLabel="Personne Physique" itemValue="Physique" />  
+                            <f:selectItem itemLabel="Personne Morale" itemValue="Morale" />   
+                        </p:selectOneRadio>
+                    </p:panelGrid>
+
+                    <br></br><ui:include src="../menu.xhtml"/><br></br>
+
+                    <p:panel id="UtilisateurCreateDlg"  header="Boite Postale">
+
+                        <p:panelGrid columns="4" >
+                           <p:outputLabel value="Profession " for="prof" />
+                            <p:inputText id="prof" value="#{searchBean.emploi.profession}" title="profession" style="width: 275px;"/>
+
+                            <p:outputLabel for="typeEntreprise"  value="Type Entreprise"/>
+                            <p:selectOneMenu id="typeEntreprise" value="#{searchBean.emploi.typeEntreprise}" style="width: 250px;">
+                                <f:selectItem itemLabel="#" itemValue="#"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nom Entreprise " for="nomEntreprise" />
+                            <p:inputText id="nomEntreprise" value="#{searchBean.emploi.nomEntreprise}" required="tue" title="nomEntreprise" style="width: 275px;"/>
+
+                            <p:outputLabel value="Designation " for="designation" />
+                            <p:inputText id="designation" value="#{searchBean.emploi.designation}" title="designation" style="width: 275px;"/>
+
+                            <p:outputLabel value="Type Emploi" for="typeEmploi" />
+                            <p:inputText id="typeEmploi" value="#{searchBean.emploi.typeEmploi}" title="Type Emploi"   style="width: 275px;"/>
+
+                            <p:outputLabel value="Numero Du Permis De Travail " for="numPermiTravail" />
+                            <p:inputText id="numPermiTravail" value="#{searchBean.emploi.numPermiTravail}"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Frais Loyer " for="fraisLoyer" />
+                            <p:inputText id="fraisLoyer" value="#{searchBean.emploi.fraisLoyer}" title="Frais Loyer"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Travail Depuis " for="travailDepuis" />
+                             <p:inputText id="travailDepuis" value="#{searchBean.emploi.travailDepuis}" style="width: 275px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{searchBean.updateEmploi}" value="Sauvegarder" update=":growl"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="#{searchBean.afficher}" value="Afficher / Modifier"  ajax="false"/></ol>   
+                </ul>
+            </div> 
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:composition template="/template/template.xhtml">
+        <ui:define name="top_bottom">
+            <div style="text-align: center;"><p:graphicImage value="../../resources/images/78.gif"    width="3%" height="3%" /></div>
+        </ui:define>
+        <ui:define  name="content" >
+            <h:outputText value="Aide" style="font: normal small-caps 130% sans-serif; color: #FFCC00;"/><br></br>       
+            <h:panelGrid id="text" columns="1"  style="font: small"> 
+                    <b>  I. ANALYSE </b><br></br>
+                    <b>I.1 Les différents services qui seront proposées aux clients<br></br>
+                        I.1.1 Des services d'information à la demande</b><br></br>
+                    Grâce à ces fonctionnalités les clients peuvent à tout moment demander de recevoir des
+                    informations par SMS sur leur téléphone mobile. Pour cela le client envoie un SMS
+                    contenant un mot clé spécifique au service dont il veut avoir accès auquel il ajoute un code
+                    personnel (code PIN) qui lui est attribué par la banque. Ces différents services sont :<br></br>
+                    -- demande de solde,<br></br>
+                    -- demande historique (quatre dernières transactions sur un compte),<br></br>
+                    -- demande de chéquier,<br></br>
+                    -- demande de virement.<br></br>
+                    <b>Exemple:</b> pour consulter son solde, il va simplement envoyer un SMS depuis son téléphone
+                    contenant :"numerocompte" "code".<br></br> Comme exemple, nous pouvons avoir le
+                    SMS suivant : <b>3731000005213 PIN SOLDE<br></br><br></br>
+                        I.1.2 Des services de notification évènementielle</b><br></br>
+                    <br></br>
+                    <b>I.1.3 Des services de notification périodique</b>
+                   <br></br>
+                    <b>I.2.3.1 Gestion de la facturation</b><br></br>
+                    SMS BANKING donnera à la banque ou la coopérative bancaire la liberté de définir sa
+                    politique tarifaire adéquate (facturation mensuelle ou facturation par SMS envoyé au client)
+                    et de paramétrer la facturation pour chaque client.<br></br>
+                    <b>1.2.3.2 Gestion des SMS</b><br></br>
+                    L'application devra offrir la possibilité de :<br></br>
+                    -- consulter à tout moment de tous les messages reçus par le système,<br></br>
+                    -- consulter à tout moment de tous les messages émis par le système,<br></br>
+                    -- rechercher tous les SMS envoyés ou reçus par un client,<br></br>
+                    -- rechercher tous les SMS reçu ou envoyé par le système pendant une période, de
+                    rechercher les SMS entrant et sortant par service.<br></br>
+
+                    <b>II. SECURITE</b><br></br>
+                    Pour les besoins de sécurité, chaque client de SMS BANKING doit avoir un code PIN
+                    personnel qu'il devra intégrer à tous ses SMS. De plus, en vue de renforcer la sécurité, les
+                    SMS ne sont traités que lorsque le numéro de téléphone du client et le code pin sont justes.
+
+            </h:panelGrid>
+        </ui:define>
+
+    </ui:composition>
+</html>
+

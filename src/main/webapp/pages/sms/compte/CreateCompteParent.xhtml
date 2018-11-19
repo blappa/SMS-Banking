@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br>
+        <h:outputText value="Gestion SMS >> Compte SMS" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="f2">
+            <h:panelGroup id="display1">
+                <div id="datalist" >
+
+                    <p:panel visible="#{!empty smsBean.smsCompte.idClient}">
+                        <h:outputText value="Votre Code PIN CreateCompteTwuilioest : #{smsBean.pin}"  style="width: 90px;color: green; font-size: xx-large"/>
+                    </p:panel>
+
+                    <p:panel id="OperCreateDlg1"  header="Authentification Du Compte Parent">
+
+                        <p:panelGrid id="fe" columns="2" >
+                            <p:outputLabel value="ID Compte Parent " for="code" />
+                            <p:inputText id="code" value="#{smsBean.compteParent.idClient}" title="idClient"  style="width: 480px;"/>
+                        </p:panelGrid>
+                        <br></br>
+                        <p:panelGrid columns="2" >
+
+                            <p:outputLabel value="N° Mobile " for="num" />
+                            <p:inputText id="num" value="#{smsBean.smsCompte.mobile}" title="Mobile" required="true"  style="width: 480px;"/>
+
+                            <p:outputLabel value="ACCOUNT_SID *: " for="aC" />
+                            <p:inputText id="aC" value="#{smsBean.compteParent.accountID}" required="true" title="SID"  style="width: 480px;"/>
+
+                            <p:outputLabel value="AUTH_TOKEN*: " for="aU" />
+                            <p:inputText id="aU" value="#{smsBean.compteParent.token}" title="TOKEN" required="true" style="width: 480px;"/>
+
+                            <p:outputLabel value="Caller ID*: " for="cal" />
+                            <p:inputText id="cal" value="#{smsBean.compteParent.callerID}" title="CallerId" required="true" style="width: 480px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+            </h:panelGroup>
+            <div id="bouton1">
+                <ul>   
+                    <ol>  <p:commandButton icon="ui-icon-play" actionListener="#{smsBean.saveCompteParent}" value="Enregistrer" update=":growl" ajax="false" /></ol>
+                </ul>
+            </div>
+        </h:form >
+        <h:form id="f1">
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton icon="ui-icon-cancel" action="#{smsBean.effacer}" value="Effacer"  ajax="false"/></ol> 
+                    <ol>
+                        <p:menubar>
+                            <p:submenu label="Options" >
+                                <p:menuitem title=" Kannel" icon="ui-icon-clipboard" value="kannel"  url="/pages/sms/compte/Create_1.xhtml" onclick="fmenu.submit();"  style="color: black;"></p:menuitem>  
+                                <p:menuitem title="Recherche" icon="ui-icon-search" url="/pages/sms/compte/Search_2.xhtml" value="Afficher" onclick="fmenu.submit();"  style="color: black;"></p:menuitem>
+                                <p:menuitem title="list" icon="ui-icon-document" value="Liste"  url="/pages/sms/compte/ListCompteParent.xhtml" onclick="fmenu.submit();"  style="color: black;"></p:menuitem> 
+                            </p:submenu>
+                        </p:menubar>
+                    </ol>
+                </ul>
+            </div> 
+        </h:form>
+    </ui:define>
+</ui:composition>
+

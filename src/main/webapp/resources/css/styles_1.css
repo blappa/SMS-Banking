@@ -1,0 +1,46 @@
+
+html {
+    background: ivory;
+    font-size: small;
+    margin: 0px 20px 0px 20px;
+}
+
+
+#bottomIndex
+{
+    /*background: darkgray;*/
+    padding:1%;
+    margin-top:5%;
+}
+
+#options{
+  float: left;  
+}
+
+#login{
+    padding: 20px;
+    margin: 180px 400px 0px 300px;
+}
+
+#loginform{
+    background: antiquewhite;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.errorblock {
+    color: #ff0000;
+    background-color: #ffEEEE;
+    border: 3px solid #ff0000;
+    border-radius:50px 50px 0px 0px;
+    padding-left: 50px;
+}
+
+
+.find{
+    background-image: url('../images/find.png') !important;
+}
+
+
+.redc{
+    background-color: coral;   
+}

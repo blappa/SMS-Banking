@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+
+                    <br></br><ui:include src="menu.xhtml"/><br></br> 
+                    <h:outputText value="Administrateur >> Support" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+                    <p:panel id="OffreCreateDlg"  header="Choix Support de Transmission">
+
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <h:outputText value="GSM " />  
+                            <p:selectBooleanCheckbox  value="#{smsBean.support.gsm}"/> 
+
+                            <h:outputText value="Internet" />  
+                            <p:selectBooleanCheckbox value="#{smsBean.support.net}"/> 
+
+                        </h:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-zoomin" actionListener="#{smsBean.affich()}" value="Afficher" ajax="false" style="color: black;" update=":growl"/></ol>
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{smsBean.saveChoix}" value="Enregistrer" update=":growl" ajax="false"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

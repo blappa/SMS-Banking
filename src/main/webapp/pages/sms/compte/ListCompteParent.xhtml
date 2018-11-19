@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br><br></br>
+        <h:outputText value="Gestion SMS >> Compte SMS" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="SmsListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Comptes Parents">
+
+                    <p:dataTable id="datalist" value="#{smsBean.compteParents}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{smsBean.compteParent}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="IDSMS_Compte"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idClient}" filterBy="#{item.idClient}">
+                            <f:facet name="header">
+                                <h:outputText value="IDClient"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.accountID}" filterBy="#{item.accountID}">
+                            <f:facet name="header">
+                                <h:outputText value="Account ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.accountID}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.token}" filterBy="#{item.token}">
+                            <f:facet name="header">
+                                <h:outputText value="Token ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.token}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.callerID}" filterBy="#{item.callerID}">
+                            <f:facet name="header">
+                                <h:outputText value="Caller ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.callerID}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{smsBean.deleteCompteParent}" update=":growl,datalist" disabled="#{empty smsBean.compteParents}"/></ol>   
+                   <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":SmsViewForm" oncomplete="SmsViewDialog.show()" disabled="#{empty smsBean.compteParents}"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="View_1.xhtml"/>
+    </ui:define>
+</ui:composition>

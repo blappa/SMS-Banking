@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OffreViewDlg" widgetVar="OffreViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil">
+            <h:outputText value="Client >> Offre Spéciale" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="OffreViewForm">
+
+                <h:panelGroup id="display">
+
+                    <p:panelGrid columns="2" rendered="#{offreBean.offreSpeciale != null}">
+
+                        <h:outputText value="Peut Reccevoir Des Salutations"/> 
+                        <h:outputText value="#{offreBean.offreSpeciale.recevoireSalutation}" /> 
+
+                        <h:outputText value="ID Client " />  
+                        <h:outputText value="#{offreBean.offreSpeciale.idPersonne.nomClient}" /> 
+
+                        <h:outputText value="Nom Client " />  
+                        <h:outputText value="#{offreBean.offreSpeciale.idPersonne.idClient}" /> 
+
+                        <h:outputText value="Peut Reccevoir Des Offres Spéciales " />  
+                        <h:outputText value="#{offreBean.offreSpeciale.recevoireOffreSpeciale}" /> 
+
+                        <h:outputText value="Peut Reccevoir Relevé De Compte Par Email " />  
+                        <h:outputText value="#{offreBean.offreSpeciale.recevoireReleveCompte}" /> 
+
+                        <h:outputText value="Peut Reccevoir Les Alertes Par SMS " />  
+                        <h:outputText value="#{offreBean.offreSpeciale.recevoireAlerte}" /> 
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" oncomplete="OffreViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+         <h:outputText value="Client >>Adresse" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{searchBean.personne.codeAgence}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="ID Du Client " for="idC" />
+                        <p:inputText id="idC" value="#{searchBean.personne.idClient}" title="ID"  disabled="true" style="width: 275px;color: green; font-size: x-large"/>
+
+                        <p:outputLabel value="Nom Du Client " for="nomC" />
+                        <p:inputText id="nomC" value="#{searchBean.personne.nomClient}" title="nom"  style="width: 275px;"/>
+
+                        <h:outputText value="Type De Client " />  
+                        <p:selectOneRadio id="options" value="#{searchBean.personne.typePersonne}" required="true" requiredMessage="le status est obligatoire"  style="width: 275px; float: right">  
+                            <f:selectItem itemLabel="Personne Physique" itemValue="Physique" />  
+                            <f:selectItem itemLabel="Personne Morale" itemValue="Morale" />   
+                        </p:selectOneRadio>
+                    </p:panelGrid>
+
+                    <br></br><ui:include src="../menu.xhtml"/><br></br>
+
+                    <p:panel id="UtilisateurCreateDlg"  header="Boite Postale">
+
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="Type D'adresse " for="typeAdresse" />
+                            <p:selectOneRadio id="typeAdresse" value="#{searchBean.adresse.typeAdresse}"   style="width: 285px;">  
+                                <f:selectItem itemLabel="#" itemValue="#" />
+                                <f:selectItem itemLabel="+" itemValue="+" />
+                            </p:selectOneRadio>
+
+                            <p:outputLabel value="Ville: " for="ville" />
+                            <p:inputText id="ville" value="#{searchBean.adresse.ville}" title="ville" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Adresse 1 " for="adresse1" />
+                            <p:inputText id="adresse1" value="#{searchBean.adresse.adresse1}" title="adresse 1"   style="width: 275px;"/>
+
+                            <p:outputLabel value="Adresse 2 " for="adresse2" />
+                            <p:inputText id="adresse2" value="#{searchBean.adresse.adresse2}" title="adresse 2"   style="width: 275px;"/>
+
+                            <p:outputLabel value="Pays: " for="pays" />
+                            <p:inputText id="pays" value="#{searchBean.adresse.pays}" title="pays" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Tél. Portable" for="tel" />
+                            <p:inputText id="tel" value="#{searchBean.adresse.telPortable}" title="Téléphone"   style="width: 275px;"/>
+
+                            <p:outputLabel value="Téléphone N=°1: " for="tel1" />
+                            <p:inputText id="tel1" value="#{searchBean.adresse.telephone1}" title="Téléphone N=°1" required="true" style="width: 275px;"/>
+
+                            <p:outputLabel value="Téléphone N=°2: " for="tel2" />
+                            <p:inputText id="tel2" value="#{searchBean.adresse.telephone2}" title="Téléphone N=°2"  style="width: 275px;"/>
+
+                            <p:outputLabel value="E-mail: " for="mail" />
+                            <p:inputText id="mail" value="#{searchBean.adresse.email}" title="E-mail"  style="width: 275px;"/>
+
+                            <p:outputLabel value=" zipCode " for="zipCode" />
+                            <p:inputText id="zipCode" value="#{searchBean.adresse.zipCode}" title="zip Code" required="true" style="width: 275px;"/>
+
+                            <p:outputLabel value="N° Du Télécopieur" for="telecopieur" />
+                            <p:inputText id="telecopieur" value="#{searchBean.adresse.telecopieur}" title="telecopieur"  style="width: 275px;"/>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{searchBean.updateAdresse}" value="Sauvegarder" update=":growl"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="#{searchBean.afficher}" value="Afficher / Modifier"  ajax="false"/></ol>   
+                </ul>
+            </div> 
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

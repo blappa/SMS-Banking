@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br><br></br><h:outputText value="Gestion SMS >> SMS Crédit" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="OperListForm">
+            <div id="datalist">
+                <p:panel header="SMS Demande De Crédit">
+
+                    <p:dataTable id="datalist" value="#{smsBean.smsTransferts}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{smsBean.sms}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="ISMS"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonnePhysique.idPersonne.nomClient}" filterBy="#{item.idPersonnePhysique.idPersonne.nomClient}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Client Personne Physique"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonnePhysique.idPersonne.nomClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonneMoral.idPersonne.nomClient}" filterBy="#{item.idPersonneMoral.idPersonne.nomClient}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Client Personne Moral"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonneMoral.idPersonne.nomClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idCompte.classeCompte}" filterBy="#{item.idCompte.classeCompte}">
+                            <f:facet name="header">
+                                <h:outputText value="Classe Compte"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCompte.classeCompte}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.telephoneExp}" filterBy="#{item.telephoneExp}">
+                            <f:facet name="header">
+                                <h:outputText value="Téléphone Expéditeur"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephoneExp}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.dateJour}" filterBy="#{item.dateJour}">
+                            <f:facet name="header">
+                                <h:outputText value="Date D'expédition"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateJour}"/>
+                        </p:column>
+                         <p:column sortBy="#{item.message}" filterBy="#{item.message}">
+                            <f:facet name="header">
+                                <h:outputText value="Message"/>
+                            </f:facet>
+                            <h:outputText value="#{item.message}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{smsBean.delete}" update=":growl,datalist"/></ol>   
+                   <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":SmsViewForm" oncomplete="SmsViewDialog.show()"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="View.xhtml"/>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurViewDlg" widgetVar="UtilisateurViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil Client Personne Morale">
+             <h:outputText value="Client >> Morale" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="UtilisateurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personneBean.personneMorale != null}">
+
+                      
+                        <h:outputText value="Nom Entreprise"/>
+                        <h:outputText value="#{personneBean.personneMorale.nomEntreprise} #{personneBean.personneMorale.idPersonne.nomClient} code (#{personneBean.personneMorale.idPersonne.idClient})" title="#{personneBean.personneMorale.nomEntreprise} #{personneBean.personneMorale.idPersonne.nomClient}"  style="width: 275px;"/>
+
+                        <h:outputText value="Constitution "/>
+                        <h:outputText value="#{personneBean.personneMorale.constitution}" title="#{personneBean.personneMorale.constitution}"  style="width: 275px;"/>
+
+                        <h:outputText value="Date Enregistrement"/>
+                        <h:outputText value="#{personneBean.personneMorale.dateEnregistrement}" title="#{personneBean.personneMorale.dateEnregistrement}"  style="width: 275px;"/>
+
+                        <h:outputText value="Numero Enregistrement "/>
+                        <h:outputText value="#{personneBean.personneMorale.numEnregistrement}" title="#{personneBean.personneMorale.numEnregistrement}"  style="width: 275px;"/>
+
+                        <h:outputText value="Secteur Activite"/>
+                        <h:outputText value="#{personneBean.personneMorale.secteurActivite}" title="#{personneBean.personneMorale.secteurActivite}"  style="width: 275px;"/>
+                        
+                        <h:outputText value="Site Web "/>
+                        <h:outputText value="#{personneBean.personneMorale.siteWeb}" title="#{personneBean.personneMorale.siteWeb}"  style="width: 275px;"/>
+
+                        <h:outputText value="Commentaire "/>
+                        <h:outputText value="#{personneBean.personneMorale.commentaire}" title="#{personneBean.personneMorale.commentaire}"  style="width: 275px;"/>
+
+                        <h:outputText value="Date Ouverture"/>
+                        <h:outputText value="#{personneBean.personneMorale.dateOuverture}" title="#{personneBean.personneMorale.dateOuverture}"  style="width: 275px;"/>
+
+                        <h:outputText value="Ouvert Par "/>
+                        <h:outputText value="#{personneBean.personneMorale.ouvertPar}" title="#{personneBean.personneMorale.ouvertPar}"  style="width: 275px;"/>
+ 
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" onclick="UtilisateurViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

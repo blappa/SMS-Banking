@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br>
+        <h:outputText value="Gestion SMS >> Compte SMS" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="OperCreateForm">
+
+            <h:panelGroup id="display">
+                <div id="datalist"> 
+                    <p:panel id="OperCreateDlg"  header="Enregistrer Un Compte SMS Kannel">
+                        <p:panel visible="#{!empty smsBean.smsCompte.idClient}">
+                            <h:outputText value="Votre Code PIN est : #{smsBean.pin}"  style="width: 90px;color: green; font-size: xx-large"/>
+                        </p:panel>
+                        <p:panelGrid columns="2" >
+
+                            <p:outputLabel value="Code Agence " for="codeA" />
+                            <p:inputText id="codeA" value="#{smsBean.smsCompte.numServeur}" title="code Agence" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Code Client (code fournit par la banque): " for="code" />
+                            <p:inputText id="code" value="#{smsBean.smsCompte.idClient}" title="code" required="true"  style="width: 275px;"/>
+
+                            <h:outputText value="Type Compte" />  
+                            <p:selectOneRadio id="options" value="#{smsBean.smsCompte.typeCompte}"  requiredMessage="le status est obligatoire"  style="width: 275px;">  
+                                <f:selectItem itemLabel="#" itemValue="#" />  
+                                <f:selectItem itemLabel="*" itemValue="*" />  
+                            </p:selectOneRadio>
+
+                            <p:outputLabel value="Mobile " for="num" />
+                            <p:inputText id="num" value="#{smsBean.smsCompte.mobile}" title="Mobile" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="E-mail " for="mail" />
+                            <p:inputText id="mail" value="#{smsBean.smsCompte.email}" title="e-mail"   style="width: 275px;"/>
+
+                            <h:outputText value="Langue" />  
+                            <p:selectOneRadio id="langues" value="#{smsBean.smsCompte.langue}" required="true" requiredMessage="la langue parlée est obligatoire"  style="width: 275px;">  
+                                <f:selectItem itemLabel="Français" itemValue="French" />  
+                                <f:selectItem itemLabel="Anglais" itemValue="English" />  
+                            </p:selectOneRadio>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{smsBean.saveSmsCompte}" value="Enregistrer" update=":growl" ajax="false"/></ol>
+                    </ul>
+                </div>
+            </h:panelGroup>
+        </h:form>
+        <h:form id="f1">
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton icon="ui-icon-cancel" action="#{smsBean.effacer}" value="Effacer"  ajax="false"/></ol> 
+                    <ol>
+                        <p:menubar>
+                            <p:submenu label="Options" >
+                                <p:menuitem title=" Twilio"  icon="ui-icon-clipboard" value="Compte Parent" url="/pages/sms/compte/CreateCompteParent.xhtml" onclick="fmenu.submit();"  style="color: black;"></p:menuitem>
+                                <p:menuitem title="list" icon="ui-icon-document" value="Liste"  url="/pages/sms/compte/List.xhtml" onclick="fmenu.submit();"  style="color: black;"></p:menuitem>
+                                <p:menuitem title="Recherche" icon="ui-icon-search" url="/pages/sms/compte/Search_1.xhtml" value="Afficher" onclick="fmenu.submit();"  style="color: black;"></p:menuitem>
+                            </p:submenu>
+                        </p:menubar>
+                    </ol>
+                </ul>
+            </div> 
+        </h:form>
+    </ui:define>
+</ui:composition>
+

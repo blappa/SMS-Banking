@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+       <h:outputText value="Client >> Offre Spéciale" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{offreBean.personne.codeAgence}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="ID Du Client " for="idC" />
+                        <p:inputText id="idC" value="#{offreBean.personne.idClient}" title="ID"  style="width: 275px;"/>
+
+                        <p:outputLabel value="Nom Du Client " for="nomC" />
+                        <p:inputText id="nomC" value="#{offreBean.personne.nomClient}" title="nom"  style="width: 275px;"/>
+
+                        <h:outputText value="Type De Client " />  
+                        <p:selectOneRadio id="options" value="#{offreBean.personne.typePersonne}" required="true" requiredMessage="le champs est obligatoire"  style="width: 275px; float: right">  
+                            <f:selectItem itemLabel="Personne Physique" itemValue="Physique" /> 
+                            <f:selectItem itemLabel="Personne Morale" itemValue="Morale" />
+                        </p:selectOneRadio>
+                    </p:panelGrid>
+
+                    <br></br><ui:include src="../menu.xhtml"/><br></br>
+
+                    <p:panel id="OffreCreateDlg"  header="Offres Spéciales">
+
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <h:outputText value="Peut Reccevoir Des Salutations " />  
+                            <p:selectBooleanCheckbox value="#{offreBean.offreSpeciale.recevoireSalutation}" /> 
+
+                            <h:outputText value="Peut Reccevoir Des Offres Spéciales " />  
+                            <p:selectBooleanCheckbox value="#{offreBean.offreSpeciale.recevoireOffreSpeciale}" /> 
+
+                            <h:outputText value="Peut Reccevoir Relevé De Compte Par Email " />  
+                            <p:selectBooleanCheckbox value="#{offreBean.offreSpeciale.recevoireReleveCompte}" /> 
+
+                            <h:outputText value="Peut Reccevoir Les Alertes Par SMS " />  
+                            <p:selectBooleanCheckbox value="#{offreBean.offreSpeciale.recevoireAlerte}" /> 
+
+                        </h:panelGrid>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>   
+                        <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{offreBean.saveOffreSpeciale}" value="Sauvegarder" update=":growl"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+        <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="Search" value="Afficher / Modifier"  ajax="false"/></ol>   
+                    <ol><p:commandButton id="viewButton2" icon="ui-icon-document" action="List" value="Afficher La Liste"  ajax="false"/></ol>   
+                    <ol><p:commandButton id="offreButton" icon="ui-icon-mail-closed" actionListener="#{offreBean.nosOffre}" value="Envoyer Les Offres"  ajax="false"/></ol>  
+                </ul>
+            </div> 
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>
+

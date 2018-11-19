@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+    <ui:define name="content">
+        <h:outputText value="Client >> Physique" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form >
+
+            <h:panelGroup id="display">
+                <div id="datalist">
+                    <p:panelGrid columns="2" >
+                        <p:outputLabel value="Code Agence " for="codeP" />
+                        <p:inputText id="codeP" value="#{searchBean.personne.codeAgence}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="ID Du Client " for="idC" />
+                        <p:inputText id="idC" value="#{searchBean.personne.idClient}" title="ID" disabled="true" style="width: 275px;color: green; font-size: x-large"/>
+
+                        <p:outputLabel value="Nom Du Client " for="nomC" />
+                        <p:inputText id="nomC" value="#{searchBean.personne.nomClient}" title="nom"  style="width: 275px;"/>
+
+                        <h:outputText value="Type De Client " />  
+                        <p:selectOneRadio id="options" value="#{searchBean.personne.typePersonne}" required="true" requiredMessage="le status est obligatoire"  style="width: 275px; float: right">  
+                            <f:selectItem itemLabel="Personne Physique" itemValue="Physique" />  
+                           <!-- <f:selectItem itemLabel="Personne Morale" itemValue="Morale" />   -->
+                        </p:selectOneRadio>
+                    </p:panelGrid>
+
+                    <br></br><ui:include src="../menu.xhtml"/><br></br>
+
+                    <p:panel id="UtilisateurCreateDlg"  header="Détail Personnel Physique">
+
+                        <p:panelGrid columns="4" >
+                            <p:outputLabel value="Civilité " for="civilite" />
+                            <p:inputText id="civilite" value="#{searchBean.personnePhysique.civilite}" title="civilité" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Nom: " for="nom" />
+                            <p:inputText id="nom" value="#{searchBean.personnePhysique.nom}" title="nom" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Deuxiéme Prénom: " for="prenom2" />
+                            <p:inputText id="prenom2" value="#{searchBean.personnePhysique.prenom2}" title="prénom2" style="width: 275px;"/>
+
+                            <p:outputLabel value="Prénom: " for="prenom1" />
+                            <p:inputText id="prenom1" value="#{searchBean.personnePhysique.prenom1}" title="prénom"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Sexe: " for="sexe" />
+                            <p:inputText id="sexe" value="#{searchBean.personnePhysique.sexe}" title="sexe" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Age: " for="age" />
+                            <p:inputText id="age" value="#{searchBean.personnePhysique.age}" title="age" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="N° CNI: " for="cni" />
+                            <p:inputText id="cni" value="#{searchBean.personnePhysique.cni}" title="cni" required="true"  style="width: 275px;"/>
+
+                            <p:outputLabel value="Date De Naissance " for="age2" />
+                            <p:calendar id="age2"  value="#{searchBean.personnePhysique.dateNais}" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                            <p:outputLabel value="Date D'expiration " for="exp" />
+                            <p:calendar id="exp"  value="#{searchBean.personnePhysique.dateExpiration}" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                            <p:outputLabel value="Ouvert Le: " for="ouv" />
+                            <p:calendar id="ouv"  value="#{searchBean.personnePhysique.dateOuverture}" required="true" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                        </p:panelGrid>
+                        <p:panel visible="false">
+                            <p:inputText id="id" value="#{searchBean.personnePhysique.id}" />
+                        </p:panel>
+                    </p:panel>
+                </div> 
+                <div id="bouton1">
+                    <ul>  
+                         <ol><p:commandButton icon="ui-icon-refresh" actionListener="#{searchBean.updateUser}" value="Sauvegarder" update=":growl" ajax="false"/></ol>
+                    </ul>
+                </div> 
+            </h:panelGroup>
+
+        </h:form>
+       <h:form>
+            <div id="bouton1">
+                <ul>  
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search" action="#{searchBean.afficher}" value="Afficher / Modifier"  ajax="false" /></ol>   
+                </ul>
+            </div> 
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

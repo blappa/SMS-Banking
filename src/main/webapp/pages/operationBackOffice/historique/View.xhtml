@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperViewDlg" widgetVar="OperViewDialog" modal="true" resizable="false" appendToBody="true" header="Historique">
+            <h:outputText value="BackOffice >> Gestion des historiques" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="OperViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationBean.operation != null}">
+
+                      
+                        <h:outputText value="Nom Cperation"/>
+                        <h:outputText value="#{operationBean.operation.nomOperation}" title="#{operationBean.operation.nomOperation}"  style="width: 275px;"/>
+
+                        <h:outputText value="Solde Compte "/>
+                        <h:outputText value="#{operationBean.operation.soldeCompte}" title="#{operationBean.operation.soldeCompte}"  style="width: 275px;"/>
+
+                        <h:outputText value="Compte Source Client Physique "/>
+                        <h:outputText value="#{operationBean.operation.cpteSrc.idPersonnePhysique.idPersonne.codeProduit}" title="#{operationBean.operation.cpteSrc.idPersonnePhysique.idPersonne.codeProduit}"  style="width: 275px;"/>
+
+                        <h:outputText value="Compte Destination Client Morale"/>
+                        <h:outputText value="#{operationBean.operation.cpteDest.idPersonnePhysique.idPersonne.codeProduit}" title="#{operationBean.operation.cpteDest.idPersonnePhysique.idPersonne.codeProduit}"  style="width: 275px;"/>
+
+                        <h:outputText value="Nom Client"/>
+                        <h:outputText value="#{operationBean.operation.cpteDest.idPersonnePhysique.idPersonne.nomClient}" title="#{operationBean.operation.cpteDest.idPersonnePhysique.idPersonne.nomClient}"  style="width: 275px;"/>
+                        
+                        <h:outputText value="Solde Opération"/>
+                        <h:outputText value="#{operationBean.operation.soldeCompte}" title="#{operationBean.operation.soldeCompte}"  style="width: 275px;"/>
+                        
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" onclick="OperViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+        <h:form id="PersonneListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Utilisateur">
+                    <p:dataTable id="datalistA" value="#{personneBean.personnePhysiques}" var="item"  
+                                 selectionMode="single" selection="#{personneBean.personnePhysique}"
+                                 rowKey="#{item.id}"
+                                 emptyMessage="aucun utilisateur enregistré"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                       <p:column>
+                           <h:outputText value="#{item.idPersonne.idAgence.codeAgence}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.idPersonne.nomClient}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.idPersonne.login}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{item.idPersonne.numeroCompte}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{personneBean.deleteUserPhysique}" update=":growl,datalistA"/></ol>   
+                   <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":PersonneViewForm" oncomplete="PersonneViewDialog.show()"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="ViewUser.xhtml"/>
+</ui:composition>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="menu.xhtml"/><br></br><br></br>
+        <h:outputText value="Caisse >> Débiter" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <p:panel id="OperCreateDlg"  header="Debiter un compte">
+
+            <h:form id="OperCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" >
+
+                        <p:outputLabel value="Code Employé (code fournit par la banque): " for="code" />
+                        <p:inputText id="code" value="#{operationBean.code}" title="code" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="Compte à Debiter " for="src" />
+                        <p:inputText id="src" value="#{operationBean.numSrc}" title="src" required="true"  style="width: 275px;"/>
+
+                        <p:outputLabel value="Récit" for="recit" />
+                        <p:inputTextarea id="recit" value="#{operationBean.operation.recit}" title="description" style="width: 275px;" />
+
+                        <p:outputLabel for="date"  value="Date Du Jour"/>
+                        <p:calendar id="date"  value="#{operationBean.operation.dateJour}" required="true" pattern="dd/MM/yyyy" showOn="button" style="width: 275px;"/>
+
+                        <h:outputText value="Code Operation * " />  
+                        <p:selectOneRadio id="options" value="#{operationBean.operation.nomOperation}" required="true" requiredMessage="code opération est obligatoire"  style="width: 275px;">   
+                            <f:selectItem itemLabel="00D14" itemValue="00D14" />   
+                        </p:selectOneRadio>
+                        
+                        <p:outputLabel value="Somme (en FCFA)" for="solde" />
+                        <p:inputText id="solde" value="#{operationBean.operation.soldeCompte}" title="solde compte"  style="width: 275px;"/>
+
+                    </p:panelGrid><br></br><br></br><br></br>
+                    <p:commandButton actionListener="#{operationBean.saveOperationDebiter}" value="Enregistrer" update=":growl"  icon="ui-icon-refresh" ajax="false"/>
+                </h:panelGroup>
+
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

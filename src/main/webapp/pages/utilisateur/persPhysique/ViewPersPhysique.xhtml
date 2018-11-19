@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurViewDlg" widgetVar="UtilisateurViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil Client Personne Physique">
+            <h:outputText value="Client >> Physique" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="UtilisateurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personneBean.personnePhysique != null}">
+
+                      
+                        <h:outputText value="Nom "/>
+                        <h:outputText value="#{personneBean.personnePhysique.nom} code(#{personneBean.personnePhysique.idPersonne.idClient})" title="#{personneBean.personnePhysique.nom}"  style="width: 275px;"/>
+
+                        <h:outputText value="Prenom 1 "/>
+                        <h:outputText value="#{personneBean.personnePhysique.prenom1}" title="#{personneBean.personnePhysique.prenom1}"  style="width: 275px;"/>
+
+                        <h:outputText value="Date Naissance "/>
+                        <h:outputText value="#{personneBean.personnePhysique.dateNais}" title="#{personneBean.personnePhysique.dateNais}"  style="width: 275px;"/>
+
+                        <h:outputText value="Civilite "/>
+                        <h:outputText value="#{personneBean.personnePhysique.civilite}" title="#{personneBean.personnePhysique.civilite}"  style="width: 275px;"/>
+
+                        <h:outputText value="Prenom 2"/>
+                        <h:outputText value="#{personneBean.personnePhysique.prenom2}" title="#{personneBean.personnePhysique.prenom2}"  style="width: 275px;"/>
+                        
+                        <h:outputText value="Sexe "/>
+                        <h:outputText value="#{personneBean.personnePhysique.sexe}" title="#{personneBean.personnePhysique.sexe}"  style="width: 275px;"/>
+
+                        <h:outputText value="Age "/>
+                        <h:outputText value="#{personneBean.personnePhysique.age}" title="#{personneBean.personnePhysique.age}"  style="width: 275px;"/>
+
+                        <h:outputText value="N° CNI"/>
+                        <h:outputText value="#{personneBean.personnePhysique.cni}" title="#{personneBean.personnePhysique.cni}"  style="width: 275px;"/>
+
+                        <h:outputText value="Date Expiration "/>
+                        <h:outputText value="#{personneBean.personnePhysique.dateExpiration}" title="#{personneBean.personnePhysique.dateExpiration}"  style="width: 275px;"/>
+ 
+                        <h:outputText value="Date Ouverture "/>
+                        <h:outputText value="#{personneBean.personnePhysique. dateOuverture}" title="#{personneBean.personnePhysique. dateOuverture}"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" onclick="UtilisateurViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

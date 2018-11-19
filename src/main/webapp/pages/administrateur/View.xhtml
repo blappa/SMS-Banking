@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AgenceViewDlg" widgetVar="AgenceViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil Agence">
+            <h:outputText value="Administrateur >> Agence" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="AgenceViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{agenceBean.agence != null}">
+
+
+                        <h:outputText value="Nom Agence"/>
+                        <h:outputText value="#{agenceBean.agence.nomAgence}" title="#{agenceBean.agence.nomAgence}"  style="width: 275px;"/>
+
+                        <h:outputText value="Code Agence "/>
+                        <h:outputText value="#{agenceBean.agence.codeAgence}" title="#{agenceBean.agence.codeAgence}"  style="width: 275px;"/>
+
+                        <h:outputText value="Ville "/>
+                        <h:outputText value="#{agenceBean.agence.ville}" title="#{agenceBean.agence.ville}"  style="width: 275px;"/>
+
+                        <h:outputText value="Pays "/>
+                        <h:outputText value="#{agenceBean.agence.pays}" title="#{agenceBean.agence.pays}"  style="width: 275px;"/>
+
+                        <h:outputText value="Adresse " />
+                         <h:outputText id="adr" value="#{agenceBean.agence.adresse}" title="Adresse Agence"  style="width: 275px;"/>
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" oncomplete="AgenceViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

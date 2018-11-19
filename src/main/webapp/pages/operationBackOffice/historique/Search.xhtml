@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <ui:include src="../menu.xhtml"/><br></br><br></br>
+        <h:outputText value="BackOffice >> Gestion des historiques" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <p:panel id="OperCreateDlg"  header="Afficher Historique D'un Compte">
+
+            <h:form id="OperCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" >
+
+                        <p:outputLabel value="Code Agence " for="code" />
+                        <p:inputText id="code" value="#{searchBean.code}" title="code agence"  style="width: 250px;"/>
+
+                        <p:outputLabel value="Date Début " for="dateD" />
+                        <p:calendar id="dateD"  value="#{searchBean.dateDebut}" required="true" pattern="dd/MM/yyyy" showOn="button" style="width: 250px;"/>
+
+                        <p:outputLabel value="Numéro Compte " for="num" />
+                        <p:inputText id="num" value="#{searchBean.numCmpte}" title="num" required="true"  style="width: 250px;"/>
+
+                        <p:outputLabel value="Date Fin " for="dateF" />
+                        <p:calendar id="dateF"  value="#{searchBean.dateFin}" required="true" pattern="dd/MM/yyyy" showOn="button" style="width: 250px;"/>
+
+                    </p:panelGrid><br></br><br></br><br></br>
+                    <p:commandButton action="#{searchBean.searchOperation}" value="Afficher" icon="ui-icon-zoomin" ajax="false"/>
+                    <p:commandButton icon="ui-icon-cancel" value="Effacer" onclick="OperCreateForm.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:panel>
+    </ui:define>
+</ui:composition>

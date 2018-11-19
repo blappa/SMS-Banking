@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SmsViewDlg" widgetVar="SmsViewDialog" modal="true" resizable="false" appendToBody="true" header="Profil SMS">
+            <h:outputText value="Gestion SMS >> Compte SMS" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+            <h:form id="SmsViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{smsBean.compteParent != null}">
+
+
+                        <h:outputText value="IDSMS"/>
+                        <h:outputText value="#{smsBean.smsCompte.id}" title="#{smsBean.smsCompte.id}"  style="width: 275px;"/>
+
+                        <h:outputText value="Code Client "/>
+                        <h:outputText value="#{smsBean.compteParent.idClient}" title="#{smsBean.smsCompte.idClient}"  style="width: 275px;"/>
+
+                        <h:outputText value="Account ID" />  
+                        <h:outputText  value="#{smsBean.compteParent.accountID}" title="Account ID"   style="width: 275px;"/>
+
+                        <h:outputText value="Token ID" />  
+                        <h:outputText  value="#{smsBean.compteParent.token}" title="Token ID"   style="width: 275px;"/>
+
+                        <h:outputText value="Caller ID" />  
+                        <h:outputText  value="#{smsBean.compteParent.callerID}" title="Caller"   style="width: 275px;"/>
+
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-close" value="Fermer" onclick="SmsViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

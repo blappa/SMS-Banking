@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE xhtml PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition>
+        <h:form >
+            <div style="width: 150px; height: 30px; margin-bottom: 50px; float: right;">
+                <p:menubar style="border-radius: 20%">
+                    <p:menuitem title="Deconnection" value="Deconnection" url="/j_spring_security_logout" onclick="fmenu.submit();"></p:menuitem>
+                </p:menubar>
+            </div>
+            <div style="font: normal small-caps 200% monospace  ;float: left;">
+                <h:outputText value="Crédit Du Sahel"/>    
+            </div>
+        </h:form>
+    </ui:composition>
+</html>
+
+
+

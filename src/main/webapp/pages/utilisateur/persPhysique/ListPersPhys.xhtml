@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+       <h:outputText value="Client >> Physique" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="UtilisateurListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Clients Personnes Physiques">
+
+                    <p:dataTable id="datalist" value="#{personneBean.personnePhysiques}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{personneBean.personnePhysique}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="No"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonne.idClient}" filterBy="#{item.idPersonne.idClient}">
+                            <f:facet name="header">
+                                <h:outputText value="ID Client"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonne.idClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.civilite}" filterBy="#{item.civilite}">
+                            <f:facet name="header">
+                                <h:outputText value="Civilité"/>
+                            </f:facet>
+                            <h:outputText value="#{item.civilite}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonne.nomClient}" filterBy="#{item.idPersonne.nomClient}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Client"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonne.nomClient}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.prenom2}" filterBy="#{item.prenom2}">
+                            <f:facet name="header">
+                                <h:outputText value="Prénom 2"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom2}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.cni}" filterBy="#{item.cni}">
+                            <f:facet name="header">
+                                <h:outputText value="N° CNI"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cni}"/>
+                        </p:column>
+                         <p:column sortBy="#{item.dateExpiration}" filterBy="#{item.dateExpiration}">
+                            <f:facet name="header">
+                                <h:outputText value="Date D'expiration"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateExpiration}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.age}" filterBy="#{item.age}">
+                            <f:facet name="header">
+                                <h:outputText value="Age"/>
+                            </f:facet>
+                            <h:outputText value="#{item.age}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.sexe}" filterBy="#{item.sexe}">
+                            <f:facet name="header">
+                                <h:outputText value="Sexe"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexe}"/>
+                        </p:column>
+                       
+                        <p:column sortBy="#{item.dateNais}" filterBy="#{item.dateNais}">
+                            <f:facet name="header">
+                                <h:outputText value="Date De Naissance"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateNais}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.idPersonne.login}" filterBy="#{item.idPersonne.login}">
+                            <f:facet name="header">
+                                <h:outputText value="Login"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonne.login}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.dateOuverture}" filterBy="#{item.dateOuverture}">
+                            <f:facet name="header">
+                                <h:outputText value="Ouvert Le"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOuverture}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+            <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="createButton" icon="ui-icon-plus"  value="Ajouter" action="Create" ajax="false"/></ol>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{personneBean.deleteUserPhysique}" update=":growl,datalist" disabled="#{empty personneBean.personnePhysiques}"/></ol>   
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search"  value="Rechercher" action="Search" ajax="false" disabled="#{empty personneBean.personnePhysiques}"/></ol>   
+                    <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher Profil" update=":UtilisateurViewForm" oncomplete="UtilisateurViewDialog.show()" disabled="#{empty personneBean.personnePhysiques}"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="ViewPersPhysique.xhtml"/>
+    </ui:define>
+</ui:composition>

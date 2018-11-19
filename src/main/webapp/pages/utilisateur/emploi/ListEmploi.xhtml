@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/template/template.xhtml">
+
+    <ui:define name="content">
+        <h:outputText value="Client >> Emploi" style="font: normal small-caps 140% sans-serif; color: #FFCC00;"/><br></br><br></br>
+        <h:form id="EmploiListForm">
+            <div id="datalist">
+                <p:panel header="Liste Des Emplois">
+
+                    <p:dataTable id="datalist" value="#{emploiBean.emplois}" var="item" resizableColumns="true"
+                                 selectionMode="single" selection="#{emploiBean.emploi}"
+                                 rowKey="#{item.id}"
+                                 paginator="true"
+                                 rows="15"
+                                 rowsPerPageTemplate="5,10"
+                                 emptyMessage="aucun element"
+                                 rowIndexVar="index"
+                                 >
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="No"/>
+                            </f:facet>
+                            <h:outputText value="#{index+1}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.profession}" filterBy="#{item.profession}">
+                            <f:facet name="header">
+                                <h:outputText value="Profession"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profession}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.nomEntreprise}" filterBy="#{item.nomEntreprise}">
+                            <f:facet name="header">
+                                <h:outputText value="Nom Entreprise"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomEntreprise}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.designation}" filterBy="#{item.designation}">
+                            <f:facet name="header">
+                                <h:outputText value="Désignation"/>
+                            </f:facet>
+                            <h:outputText value="#{item.designation}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.typeEmploi}" filterBy="#{item.typeEmploi}">
+                            <f:facet name="header">
+                                <h:outputText value="Type Emploi"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeEmploi}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.numPermiTravail}" filterBy="#{item.numPermiTravail}">
+                            <f:facet name="header">
+                                <h:outputText value="Numero Du Permis De Travail"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numPermiTravail}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.fraisLoyer}" filterBy="#{item.fraisLoyer}">
+                            <f:facet name="header">
+                                <h:outputText value="Frais Loyer"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fraisLoyer}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.travailDepuis}" filterBy="#{item.travailDepuis}">
+                            <f:facet name="header">
+                                <h:outputText value="Travail Depuis"/>
+                            </f:facet>
+                            <h:outputText value="#{item.travailDepuis}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </p:panel>
+            </div>
+               <div id="bouton">
+                <ul>  
+                    <ol><p:commandButton id="createButton" icon="ui-icon-plus"  value="Ajouter" action="Create" ajax="false"/></ol>  
+                    <ol><p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Supprimer" actionListener="#{emploiBean.delete}" update=":growl,datalist"/></ol>   
+                    <ol><p:commandButton id="editButton" icon="ui-icon-search"  value="Rechercher" action="Search" ajax="false"/></ol>   
+                    <ol> <p:commandButton id="viewButton"   icon="ui-icon-zoomin" value="Afficher" update=":EmploiViewForm" oncomplete="EmploiViewDialog.show()"/></ol> 
+                </ul>
+                
+            </div>
+
+        </h:form>
+        <ui:include src="ViewEmploi.xhtml"/>
+    </ui:define>
+
+</ui:composition>
+
